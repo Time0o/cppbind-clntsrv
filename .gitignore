@@ -1,0 +1,2 @@
+wrap/output/*
+!wrap/output/.gitkeep

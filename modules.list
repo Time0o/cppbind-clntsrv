@@ -1,0 +1,18 @@
+entry clntsrv_c
+kernel fiasco -servial_esc
+roottask moe rom/clntsrv.cfg
+module l4re
+module ned
+module clntsrv.cfg
+module clntsrv-client-c
+module clntsrv-server
+
+entry clntsrv_lua
+kernel fiasco -servial_esc
+roottask moe rom/clntsrv.cfg
+module l4re
+module ned
+module clntsrv.cfg
+module clntsrv-client-lua
+module client.lua
+module clntsrv-server
