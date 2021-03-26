@@ -77,6 +77,7 @@ if __name__ == '__main__':
             cppbind_args += to_wrap.args()
 
         cppbind_args += [
+            '--wrap-extra-type-aliases', 'type_aliases.cc',
             '--wrap-skip-unwrappable',
             '--output-noexcept',
             '--output-directory', 'output',
