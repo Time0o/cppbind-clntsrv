@@ -8,26 +8,17 @@
 int
 main(void)
 {
-  struct l4_re_env env;
-  env.is_initialized = 0;
+  struct l4_re_env env = l4_re_env_env();
 
-  struct l4_cap_calc server_cap;
-  server_cap.is_initialized = 0;
-
-  struct calc server;
-  server.is_initialized = 0;
-
-  l4_re_env_env(&env);
-
-  l4_re_env_get_cap_calc_2(&env, "calc_server", &server_cap);
+  struct l4_cap_calc server_cap = l4_re_env_get_cap_calc_2(&env, "calc_server");
 
   if (!l4_cap_calc_is_valid(&server_cap))
     {
       printf("Could not get server capability!\n");
-      goto error;
+      goto error1;
     }
 
-  l4_cap_calc_access(&server_cap, &server);
+  struct calc server = l4_cap_calc_access(&server_cap);
 
   l4_int32_t val1 = 8;
   l4_int32_t val2 = 5;
@@ -36,7 +27,7 @@ main(void)
   if (calc_sub(&server, val1, val2, &val1))
     {
       printf("Error talking to server\n");
-      goto error;
+      goto error2;
     }
   printf("Result of substract call: %d\n", val1);
 
@@ -44,7 +35,7 @@ main(void)
   if (calc_neg(&server, val1, &val1))
     {
       printf("Error talking to server\n");
-      return 1;
+      goto error2;
     }
   printf("Result of negate call: %d\n", val1);
 
@@ -54,10 +45,11 @@ main(void)
 
   return EXIT_SUCCESS;
 
-error:
-  l4_re_env_delete(&env);
-  l4_cap_calc_delete(&server_cap);
+error2:
   calc_delete(&server);
+error1:
+  l4_cap_calc_delete(&server_cap);
+  l4_re_env_delete(&env);
 
   return EXIT_FAILURE;
 }

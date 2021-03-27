@@ -89,17 +89,17 @@ struct l4_cap_base
   int is_owning;
 };
 
-void l4_cap_l4_task_new_1(unsigned long cap, struct l4_cap_l4_task * __out);
+struct l4_cap_l4_task l4_cap_l4_task_new_1(unsigned long cap);
 
-void l4_cap_l4_task_new_2(unsigned int cap, struct l4_cap_l4_task * __out);
+struct l4_cap_l4_task l4_cap_l4_task_new_2(unsigned int cap);
 
-void l4_cap_l4_task_new_3(unsigned long idx, struct l4_cap_l4_task * __out);
+struct l4_cap_l4_task l4_cap_l4_task_new_3(unsigned long idx);
 
-void l4_cap_l4_task_new_4(unsigned int _1, struct l4_cap_l4_task * __out);
+struct l4_cap_l4_task l4_cap_l4_task_new_4(unsigned int _1);
 
-void l4_cap_l4_task_move(const struct l4_cap_l4_task * __self, const struct l4_cap_l4_task * src, struct l4_cap_l4_task * __out);
+struct l4_cap_l4_task l4_cap_l4_task_move(const struct l4_cap_l4_task * __self, const struct l4_cap_l4_task * src);
 
-void l4_cap_l4_task_copy(const struct l4_cap_l4_task * __self, const struct l4_cap_l4_task * src, struct l4_cap_l4_task * __out);
+struct l4_cap_l4_task l4_cap_l4_task_copy(const struct l4_cap_l4_task * __self, const struct l4_cap_l4_task * src);
 
 unsigned long l4_cap_l4_task_cap(const struct l4_cap_l4_task * __self);
 
@@ -109,17 +109,17 @@ unsigned long l4_cap_l4_task_snd_base(const struct l4_cap_l4_task * __self, unsi
 
 void l4_cap_l4_task_invalidate(struct l4_cap_l4_task * __self);
 
-void l4_cap_l4_kobject_new_1(unsigned long cap, struct l4_cap_l4_kobject * __out);
+struct l4_cap_l4_kobject l4_cap_l4_kobject_new_1(unsigned long cap);
 
-void l4_cap_l4_kobject_new_2(unsigned int cap, struct l4_cap_l4_kobject * __out);
+struct l4_cap_l4_kobject l4_cap_l4_kobject_new_2(unsigned int cap);
 
-void l4_cap_l4_kobject_new_3(unsigned long idx, struct l4_cap_l4_kobject * __out);
+struct l4_cap_l4_kobject l4_cap_l4_kobject_new_3(unsigned long idx);
 
-void l4_cap_l4_kobject_new_4(unsigned int _1, struct l4_cap_l4_kobject * __out);
+struct l4_cap_l4_kobject l4_cap_l4_kobject_new_4(unsigned int _1);
 
-void l4_cap_l4_kobject_move(const struct l4_cap_l4_kobject * __self, const struct l4_cap_l4_kobject * src, struct l4_cap_l4_kobject * __out);
+struct l4_cap_l4_kobject l4_cap_l4_kobject_move(const struct l4_cap_l4_kobject * __self, const struct l4_cap_l4_kobject * src);
 
-void l4_cap_l4_kobject_copy(const struct l4_cap_l4_kobject * __self, const struct l4_cap_l4_kobject * src, struct l4_cap_l4_kobject * __out);
+struct l4_cap_l4_kobject l4_cap_l4_kobject_copy(const struct l4_cap_l4_kobject * __self, const struct l4_cap_l4_kobject * src);
 
 unsigned long l4_cap_l4_kobject_cap(const struct l4_cap_l4_kobject * __self);
 
@@ -129,17 +129,17 @@ unsigned long l4_cap_l4_kobject_snd_base(const struct l4_cap_l4_kobject * __self
 
 void l4_cap_l4_kobject_invalidate(struct l4_cap_l4_kobject * __self);
 
-void l4_cap_l4_meta_new_1(unsigned long cap, struct l4_cap_l4_meta * __out);
+struct l4_cap_l4_meta l4_cap_l4_meta_new_1(unsigned long cap);
 
-void l4_cap_l4_meta_new_2(unsigned int cap, struct l4_cap_l4_meta * __out);
+struct l4_cap_l4_meta l4_cap_l4_meta_new_2(unsigned int cap);
 
-void l4_cap_l4_meta_new_3(unsigned long idx, struct l4_cap_l4_meta * __out);
+struct l4_cap_l4_meta l4_cap_l4_meta_new_3(unsigned long idx);
 
-void l4_cap_l4_meta_new_4(unsigned int _1, struct l4_cap_l4_meta * __out);
+struct l4_cap_l4_meta l4_cap_l4_meta_new_4(unsigned int _1);
 
-void l4_cap_l4_meta_move(const struct l4_cap_l4_meta * __self, const struct l4_cap_l4_meta * src, struct l4_cap_l4_meta * __out);
+struct l4_cap_l4_meta l4_cap_l4_meta_move(const struct l4_cap_l4_meta * __self, const struct l4_cap_l4_meta * src);
 
-void l4_cap_l4_meta_copy(const struct l4_cap_l4_meta * __self, const struct l4_cap_l4_meta * src, struct l4_cap_l4_meta * __out);
+struct l4_cap_l4_meta l4_cap_l4_meta_copy(const struct l4_cap_l4_meta * __self, const struct l4_cap_l4_meta * src);
 
 unsigned long l4_cap_l4_meta_cap(const struct l4_cap_l4_meta * __self);
 
@@ -161,33 +161,33 @@ int l4_cap_base_op_exclaimequal(const struct l4_cap_base * __self, const struct 
 
 void l4_cap_base_invalidate(struct l4_cap_base * __self);
 
-void l4_cap_base_copy(const struct l4_cap_base * _1, struct l4_cap_base * __out);
+struct l4_cap_base l4_cap_base_copy(const struct l4_cap_base * _1);
 
-void l4_cap_base_move(struct l4_cap_base * _1, struct l4_cap_base * __out);
+struct l4_cap_base l4_cap_base_move(struct l4_cap_base * _1);
 
 void l4_cap_base_delete(struct l4_cap_base * __self);
 
-void l4_cap_void_new_1(const void * p, struct l4_cap_void * __out);
+struct l4_cap_void l4_cap_void_new_1(const void * p);
 
-void l4_cap_void_new_2(unsigned long cap, struct l4_cap_void * __out);
+struct l4_cap_void l4_cap_void_new_2(unsigned long cap);
 
-void l4_cap_void_new_3(unsigned int cap, struct l4_cap_void * __out);
+struct l4_cap_void l4_cap_void_new_3(unsigned int cap);
 
-void l4_cap_void_new_4(unsigned long idx, struct l4_cap_void * __out);
+struct l4_cap_void l4_cap_void_new_4(unsigned long idx);
 
-void l4_cap_void_new_5(unsigned int _1, struct l4_cap_void * __out);
+struct l4_cap_void l4_cap_void_new_5(unsigned int _1);
 
-void l4_cap_void_move_1(const struct l4_cap_void * __self, const struct l4_cap_void * src, struct l4_cap_void * __out);
+struct l4_cap_void l4_cap_void_move_1(const struct l4_cap_void * __self, const struct l4_cap_void * src);
 
-void l4_cap_void_copy_1(const struct l4_cap_void * __self, const struct l4_cap_void * src, struct l4_cap_void * __out);
+struct l4_cap_void l4_cap_void_copy_1(const struct l4_cap_void * __self, const struct l4_cap_void * src);
 
-void l4_cap_void_copy_2(const struct l4_cap_void * _1, struct l4_cap_void * __out);
+struct l4_cap_void l4_cap_void_copy_2(const struct l4_cap_void * _1);
 
-void l4_cap_void_move_2(struct l4_cap_void * _1, struct l4_cap_void * __out);
+struct l4_cap_void l4_cap_void_move_2(struct l4_cap_void * _1);
 
 void l4_cap_void_delete(struct l4_cap_void * __self);
 
-void l4_cap_void_new_void(const struct l4_cap_void * o, struct l4_cap_void * __out);
+struct l4_cap_void l4_cap_void_new_void(const struct l4_cap_void * o);
 
 unsigned long l4_cap_void_cap(const struct l4_cap_void * __self);
 
@@ -201,27 +201,27 @@ int l4_cap_void_op_exclaimequal(const struct l4_cap_void * __self, const struct 
 
 void l4_cap_void_invalidate(struct l4_cap_void * __self);
 
-void l4_cap_calc_new_1(unsigned long cap, struct l4_cap_calc * __out);
+struct l4_cap_calc l4_cap_calc_new_1(unsigned long cap);
 
-void l4_cap_calc_new_2(unsigned int cap, struct l4_cap_calc * __out);
+struct l4_cap_calc l4_cap_calc_new_2(unsigned int cap);
 
-void l4_cap_calc_new_3(unsigned long idx, struct l4_cap_calc * __out);
+struct l4_cap_calc l4_cap_calc_new_3(unsigned long idx);
 
-void l4_cap_calc_new_4(unsigned int _1, struct l4_cap_calc * __out);
+struct l4_cap_calc l4_cap_calc_new_4(unsigned int _1);
 
-void l4_cap_calc_move_1(const struct l4_cap_calc * __self, const struct l4_cap_calc * src, struct l4_cap_calc * __out);
+struct l4_cap_calc l4_cap_calc_move_1(const struct l4_cap_calc * __self, const struct l4_cap_calc * src);
 
-void l4_cap_calc_copy_1(const struct l4_cap_calc * __self, const struct l4_cap_calc * src, struct l4_cap_calc * __out);
+struct l4_cap_calc l4_cap_calc_copy_1(const struct l4_cap_calc * __self, const struct l4_cap_calc * src);
 
-void l4_cap_calc_access(const struct l4_cap_calc * __self, struct calc * __out);
+struct calc l4_cap_calc_access(const struct l4_cap_calc * __self);
 
-void l4_cap_calc_copy_2(const struct l4_cap_calc * _1, struct l4_cap_calc * __out);
+struct l4_cap_calc l4_cap_calc_copy_2(const struct l4_cap_calc * _1);
 
-void l4_cap_calc_move_2(struct l4_cap_calc * _1, struct l4_cap_calc * __out);
+struct l4_cap_calc l4_cap_calc_move_2(struct l4_cap_calc * _1);
 
 void l4_cap_calc_delete(struct l4_cap_calc * __self);
 
-void l4_cap_calc_new_calc(const struct l4_cap_calc * o, struct l4_cap_calc * __out);
+struct l4_cap_calc l4_cap_calc_new_calc(const struct l4_cap_calc * o);
 
 unsigned long l4_cap_calc_cap(const struct l4_cap_calc * __self);
 

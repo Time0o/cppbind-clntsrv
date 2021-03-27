@@ -25,9 +25,9 @@ struct l4_re_env
   int is_owning;
 };
 
-void l4_re_env_env(struct l4_re_env * __out);
+struct l4_re_env l4_re_env_env(void);
 
-void l4_re_env_task(const struct l4_re_env * __self, struct l4_cap_l4_task * __out);
+struct l4_cap_l4_task l4_re_env_task(const struct l4_re_env * __self);
 
 unsigned long l4_re_env_first_free_cap_1(const struct l4_re_env * __self);
 
@@ -37,13 +37,13 @@ void l4_re_env_first_free_cap_2(struct l4_re_env * __self, unsigned long c);
 
 void l4_re_env_first_free_utcb_2(struct l4_re_env * __self, unsigned long u);
 
-void l4_re_env_new(struct l4_re_env * __out);
+struct l4_re_env l4_re_env_new(void);
 
 void l4_re_env_delete(struct l4_re_env * __self);
 
-void l4_re_env_get_cap_calc_1(const struct l4_re_env * __self, const char * name, unsigned int l, struct l4_cap_calc * __out);
+struct l4_cap_calc l4_re_env_get_cap_calc_1(const struct l4_re_env * __self, const char * name, unsigned int l);
 
-void l4_re_env_get_cap_calc_2(const struct l4_re_env * __self, const char * name, struct l4_cap_calc * __out);
+struct l4_cap_calc l4_re_env_get_cap_calc_2(const struct l4_re_env * __self, const char * name);
 
 #ifdef __cplusplus
 } // extern "C"
