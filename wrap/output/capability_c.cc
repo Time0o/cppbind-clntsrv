@@ -24,7 +24,7 @@ struct calc
   int is_owning;
 };
 
-struct l4_cap_l4_task l4_cap_l4_task_new_1(unsigned long cap)
+l4_cap_idx_t l4_cap_l4_task_new_1(unsigned long cap)
 {
   using namespace L4;
 
@@ -32,15 +32,14 @@ struct l4_cap_l4_task l4_cap_l4_task_new_1(unsigned long cap)
 
   _cap = static_cast<L4::Cap_base::Cap_type>(cap);
 
-  struct l4_cap_l4_task __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<L4::Task>>(&__ret, _cap);
+  auto __ret = new (__tmp) L4::Cap<L4::Task>(_cap);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_l4_task l4_cap_l4_task_new_2(unsigned int cap)
+l4_cap_idx_t l4_cap_l4_task_new_2(unsigned int cap)
 {
   using namespace L4;
 
@@ -48,15 +47,14 @@ struct l4_cap_l4_task l4_cap_l4_task_new_2(unsigned int cap)
 
   _cap = static_cast<l4_default_caps_t>(cap);
 
-  struct l4_cap_l4_task __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<L4::Task>>(&__ret, _cap);
+  auto __ret = new (__tmp) L4::Cap<L4::Task>(_cap);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_l4_task l4_cap_l4_task_new_3(unsigned long idx)
+l4_cap_idx_t l4_cap_l4_task_new_3(unsigned long idx)
 {
   using namespace L4;
 
@@ -66,15 +64,14 @@ struct l4_cap_l4_task l4_cap_l4_task_new_3(unsigned long idx)
     _idx = idx;
   } while(false);
 
-  struct l4_cap_l4_task __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<L4::Task>>(&__ret, _idx);
+  auto __ret = new (__tmp) L4::Cap<L4::Task>(_idx);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_l4_task l4_cap_l4_task_new_4(unsigned int _1)
+l4_cap_idx_t l4_cap_l4_task_new_4(unsigned int _1)
 {
   using namespace L4;
 
@@ -82,85 +79,78 @@ struct l4_cap_l4_task l4_cap_l4_task_new_4(unsigned int _1)
 
   __1 = static_cast<L4::Cap_base::No_init_type>(_1);
 
-  struct l4_cap_l4_task __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<L4::Task>>(&__ret, __1);
+  auto __ret = new (__tmp) L4::Cap<L4::Task>(__1);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_l4_task l4_cap_l4_task_move(const struct l4_cap_l4_task * __self, const struct l4_cap_l4_task * src)
+l4_cap_idx_t l4_cap_l4_task_move(l4_cap_idx_t __self, l4_cap_idx_t src)
 {
   using namespace L4;
 
   const L4::Cap<L4::Task> * ___self;
   const L4::Cap<L4::Task> * _src;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<L4::Task>>(__self);
+  auto ____self = L4::Cap<L4::Task>(__self);
+  ___self = &____self;
 
-  assert(src->is_initialized);
-  _src = cppbind::c::struct_cast<const L4::Cap<L4::Task>>(src);
-
-  struct l4_cap_l4_task __out;
+  auto __src = L4::Cap<L4::Task>(src);
+  _src = &__src;
 
   auto __ret = ___self->move(*_src);
 
-  cppbind::c::init_owning_struct<L4::Cap<L4::Task>>(&__out, __ret);
-  return __out;
+  return __ret.cap();
 }
 
-struct l4_cap_l4_task l4_cap_l4_task_copy(const struct l4_cap_l4_task * __self, const struct l4_cap_l4_task * src)
+l4_cap_idx_t l4_cap_l4_task_copy(l4_cap_idx_t __self, l4_cap_idx_t src)
 {
   using namespace L4;
 
   const L4::Cap<L4::Task> * ___self;
   const L4::Cap<L4::Task> * _src;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<L4::Task>>(__self);
+  auto ____self = L4::Cap<L4::Task>(__self);
+  ___self = &____self;
 
-  assert(src->is_initialized);
-  _src = cppbind::c::struct_cast<const L4::Cap<L4::Task>>(src);
-
-  struct l4_cap_l4_task __out;
+  auto __src = L4::Cap<L4::Task>(src);
+  _src = &__src;
 
   auto __ret = ___self->copy(*_src);
 
-  cppbind::c::init_owning_struct<L4::Cap<L4::Task>>(&__out, __ret);
-  return __out;
+  return __ret.cap();
 }
 
-unsigned long l4_cap_l4_task_cap(const struct l4_cap_l4_task * __self)
+unsigned long l4_cap_l4_task_cap(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   const L4::Cap<L4::Task> * ___self;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<L4::Task>>(__self);
+  auto ____self = L4::Cap<L4::Task>(__self);
+  ___self = &____self;
 
   auto __ret = ___self->cap();
 
   return __ret;
 }
 
-int l4_cap_l4_task_is_valid(const struct l4_cap_l4_task * __self)
+int l4_cap_l4_task_is_valid(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   const L4::Cap<L4::Task> * ___self;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<L4::Task>>(__self);
+  auto ____self = L4::Cap<L4::Task>(__self);
+  ___self = &____self;
 
   auto __ret = ___self->is_valid();
 
   return __ret;
 }
 
-unsigned long l4_cap_l4_task_snd_base(const struct l4_cap_l4_task * __self, unsigned int grant, unsigned long base)
+unsigned long l4_cap_l4_task_snd_base(l4_cap_idx_t __self, unsigned int grant, unsigned long base)
 {
   using namespace L4;
 
@@ -169,8 +159,8 @@ unsigned long l4_cap_l4_task_snd_base(const struct l4_cap_l4_task * __self, unsi
   unsigned long _base = L4_INVALID_CAP;
 
   do {
-    assert(__self->is_initialized);
-    ___self = cppbind::c::struct_cast<const L4::Cap<L4::Task>>(__self);
+    auto ____self = L4::Cap<L4::Task>(__self);
+    ___self = &____self;
 
     _grant = grant;
 
@@ -182,20 +172,19 @@ unsigned long l4_cap_l4_task_snd_base(const struct l4_cap_l4_task * __self, unsi
   return __ret;
 }
 
-void l4_cap_l4_task_invalidate(struct l4_cap_l4_task * __self)
+void l4_cap_l4_task_invalidate(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   L4::Cap<L4::Task> * ___self;
 
-  assert(__self->is_initialized);
-  assert(!__self->is_const);
-  ___self = cppbind::c::struct_cast<L4::Cap<L4::Task>>(__self);
+  auto ____self = L4::Cap<L4::Task>(__self);
+  ___self = &____self;
 
   ___self->invalidate();
 }
 
-struct l4_cap_l4_kobject l4_cap_l4_kobject_new_1(unsigned long cap)
+l4_cap_idx_t l4_cap_l4_kobject_new_1(unsigned long cap)
 {
   using namespace L4;
 
@@ -203,15 +192,14 @@ struct l4_cap_l4_kobject l4_cap_l4_kobject_new_1(unsigned long cap)
 
   _cap = static_cast<L4::Cap_base::Cap_type>(cap);
 
-  struct l4_cap_l4_kobject __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<L4::Kobject>>(&__ret, _cap);
+  auto __ret = new (__tmp) L4::Cap<L4::Kobject>(_cap);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_l4_kobject l4_cap_l4_kobject_new_2(unsigned int cap)
+l4_cap_idx_t l4_cap_l4_kobject_new_2(unsigned int cap)
 {
   using namespace L4;
 
@@ -219,15 +207,14 @@ struct l4_cap_l4_kobject l4_cap_l4_kobject_new_2(unsigned int cap)
 
   _cap = static_cast<l4_default_caps_t>(cap);
 
-  struct l4_cap_l4_kobject __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<L4::Kobject>>(&__ret, _cap);
+  auto __ret = new (__tmp) L4::Cap<L4::Kobject>(_cap);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_l4_kobject l4_cap_l4_kobject_new_3(unsigned long idx)
+l4_cap_idx_t l4_cap_l4_kobject_new_3(unsigned long idx)
 {
   using namespace L4;
 
@@ -237,15 +224,14 @@ struct l4_cap_l4_kobject l4_cap_l4_kobject_new_3(unsigned long idx)
     _idx = idx;
   } while(false);
 
-  struct l4_cap_l4_kobject __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<L4::Kobject>>(&__ret, _idx);
+  auto __ret = new (__tmp) L4::Cap<L4::Kobject>(_idx);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_l4_kobject l4_cap_l4_kobject_new_4(unsigned int _1)
+l4_cap_idx_t l4_cap_l4_kobject_new_4(unsigned int _1)
 {
   using namespace L4;
 
@@ -253,85 +239,78 @@ struct l4_cap_l4_kobject l4_cap_l4_kobject_new_4(unsigned int _1)
 
   __1 = static_cast<L4::Cap_base::No_init_type>(_1);
 
-  struct l4_cap_l4_kobject __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<L4::Kobject>>(&__ret, __1);
+  auto __ret = new (__tmp) L4::Cap<L4::Kobject>(__1);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_l4_kobject l4_cap_l4_kobject_move(const struct l4_cap_l4_kobject * __self, const struct l4_cap_l4_kobject * src)
+l4_cap_idx_t l4_cap_l4_kobject_move(l4_cap_idx_t __self, l4_cap_idx_t src)
 {
   using namespace L4;
 
   const L4::Cap<L4::Kobject> * ___self;
   const L4::Cap<L4::Kobject> * _src;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<L4::Kobject>>(__self);
+  auto ____self = L4::Cap<L4::Kobject>(__self);
+  ___self = &____self;
 
-  assert(src->is_initialized);
-  _src = cppbind::c::struct_cast<const L4::Cap<L4::Kobject>>(src);
-
-  struct l4_cap_l4_kobject __out;
+  auto __src = L4::Cap<L4::Kobject>(src);
+  _src = &__src;
 
   auto __ret = ___self->move(*_src);
 
-  cppbind::c::init_owning_struct<L4::Cap<L4::Kobject>>(&__out, __ret);
-  return __out;
+  return __ret.cap();
 }
 
-struct l4_cap_l4_kobject l4_cap_l4_kobject_copy(const struct l4_cap_l4_kobject * __self, const struct l4_cap_l4_kobject * src)
+l4_cap_idx_t l4_cap_l4_kobject_copy(l4_cap_idx_t __self, l4_cap_idx_t src)
 {
   using namespace L4;
 
   const L4::Cap<L4::Kobject> * ___self;
   const L4::Cap<L4::Kobject> * _src;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<L4::Kobject>>(__self);
+  auto ____self = L4::Cap<L4::Kobject>(__self);
+  ___self = &____self;
 
-  assert(src->is_initialized);
-  _src = cppbind::c::struct_cast<const L4::Cap<L4::Kobject>>(src);
-
-  struct l4_cap_l4_kobject __out;
+  auto __src = L4::Cap<L4::Kobject>(src);
+  _src = &__src;
 
   auto __ret = ___self->copy(*_src);
 
-  cppbind::c::init_owning_struct<L4::Cap<L4::Kobject>>(&__out, __ret);
-  return __out;
+  return __ret.cap();
 }
 
-unsigned long l4_cap_l4_kobject_cap(const struct l4_cap_l4_kobject * __self)
+unsigned long l4_cap_l4_kobject_cap(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   const L4::Cap<L4::Kobject> * ___self;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<L4::Kobject>>(__self);
+  auto ____self = L4::Cap<L4::Kobject>(__self);
+  ___self = &____self;
 
   auto __ret = ___self->cap();
 
   return __ret;
 }
 
-int l4_cap_l4_kobject_is_valid(const struct l4_cap_l4_kobject * __self)
+int l4_cap_l4_kobject_is_valid(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   const L4::Cap<L4::Kobject> * ___self;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<L4::Kobject>>(__self);
+  auto ____self = L4::Cap<L4::Kobject>(__self);
+  ___self = &____self;
 
   auto __ret = ___self->is_valid();
 
   return __ret;
 }
 
-unsigned long l4_cap_l4_kobject_snd_base(const struct l4_cap_l4_kobject * __self, unsigned int grant, unsigned long base)
+unsigned long l4_cap_l4_kobject_snd_base(l4_cap_idx_t __self, unsigned int grant, unsigned long base)
 {
   using namespace L4;
 
@@ -340,8 +319,8 @@ unsigned long l4_cap_l4_kobject_snd_base(const struct l4_cap_l4_kobject * __self
   unsigned long _base = L4_INVALID_CAP;
 
   do {
-    assert(__self->is_initialized);
-    ___self = cppbind::c::struct_cast<const L4::Cap<L4::Kobject>>(__self);
+    auto ____self = L4::Cap<L4::Kobject>(__self);
+    ___self = &____self;
 
     _grant = grant;
 
@@ -353,20 +332,19 @@ unsigned long l4_cap_l4_kobject_snd_base(const struct l4_cap_l4_kobject * __self
   return __ret;
 }
 
-void l4_cap_l4_kobject_invalidate(struct l4_cap_l4_kobject * __self)
+void l4_cap_l4_kobject_invalidate(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   L4::Cap<L4::Kobject> * ___self;
 
-  assert(__self->is_initialized);
-  assert(!__self->is_const);
-  ___self = cppbind::c::struct_cast<L4::Cap<L4::Kobject>>(__self);
+  auto ____self = L4::Cap<L4::Kobject>(__self);
+  ___self = &____self;
 
   ___self->invalidate();
 }
 
-struct l4_cap_l4_meta l4_cap_l4_meta_new_1(unsigned long cap)
+l4_cap_idx_t l4_cap_l4_meta_new_1(unsigned long cap)
 {
   using namespace L4;
 
@@ -374,15 +352,14 @@ struct l4_cap_l4_meta l4_cap_l4_meta_new_1(unsigned long cap)
 
   _cap = static_cast<L4::Cap_base::Cap_type>(cap);
 
-  struct l4_cap_l4_meta __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<L4::Meta>>(&__ret, _cap);
+  auto __ret = new (__tmp) L4::Cap<L4::Meta>(_cap);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_l4_meta l4_cap_l4_meta_new_2(unsigned int cap)
+l4_cap_idx_t l4_cap_l4_meta_new_2(unsigned int cap)
 {
   using namespace L4;
 
@@ -390,15 +367,14 @@ struct l4_cap_l4_meta l4_cap_l4_meta_new_2(unsigned int cap)
 
   _cap = static_cast<l4_default_caps_t>(cap);
 
-  struct l4_cap_l4_meta __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<L4::Meta>>(&__ret, _cap);
+  auto __ret = new (__tmp) L4::Cap<L4::Meta>(_cap);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_l4_meta l4_cap_l4_meta_new_3(unsigned long idx)
+l4_cap_idx_t l4_cap_l4_meta_new_3(unsigned long idx)
 {
   using namespace L4;
 
@@ -408,15 +384,14 @@ struct l4_cap_l4_meta l4_cap_l4_meta_new_3(unsigned long idx)
     _idx = idx;
   } while(false);
 
-  struct l4_cap_l4_meta __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<L4::Meta>>(&__ret, _idx);
+  auto __ret = new (__tmp) L4::Cap<L4::Meta>(_idx);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_l4_meta l4_cap_l4_meta_new_4(unsigned int _1)
+l4_cap_idx_t l4_cap_l4_meta_new_4(unsigned int _1)
 {
   using namespace L4;
 
@@ -424,85 +399,78 @@ struct l4_cap_l4_meta l4_cap_l4_meta_new_4(unsigned int _1)
 
   __1 = static_cast<L4::Cap_base::No_init_type>(_1);
 
-  struct l4_cap_l4_meta __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<L4::Meta>>(&__ret, __1);
+  auto __ret = new (__tmp) L4::Cap<L4::Meta>(__1);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_l4_meta l4_cap_l4_meta_move(const struct l4_cap_l4_meta * __self, const struct l4_cap_l4_meta * src)
+l4_cap_idx_t l4_cap_l4_meta_move(l4_cap_idx_t __self, l4_cap_idx_t src)
 {
   using namespace L4;
 
   const L4::Cap<L4::Meta> * ___self;
   const L4::Cap<L4::Meta> * _src;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<L4::Meta>>(__self);
+  auto ____self = L4::Cap<L4::Meta>(__self);
+  ___self = &____self;
 
-  assert(src->is_initialized);
-  _src = cppbind::c::struct_cast<const L4::Cap<L4::Meta>>(src);
-
-  struct l4_cap_l4_meta __out;
+  auto __src = L4::Cap<L4::Meta>(src);
+  _src = &__src;
 
   auto __ret = ___self->move(*_src);
 
-  cppbind::c::init_owning_struct<L4::Cap<L4::Meta>>(&__out, __ret);
-  return __out;
+  return __ret.cap();
 }
 
-struct l4_cap_l4_meta l4_cap_l4_meta_copy(const struct l4_cap_l4_meta * __self, const struct l4_cap_l4_meta * src)
+l4_cap_idx_t l4_cap_l4_meta_copy(l4_cap_idx_t __self, l4_cap_idx_t src)
 {
   using namespace L4;
 
   const L4::Cap<L4::Meta> * ___self;
   const L4::Cap<L4::Meta> * _src;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<L4::Meta>>(__self);
+  auto ____self = L4::Cap<L4::Meta>(__self);
+  ___self = &____self;
 
-  assert(src->is_initialized);
-  _src = cppbind::c::struct_cast<const L4::Cap<L4::Meta>>(src);
-
-  struct l4_cap_l4_meta __out;
+  auto __src = L4::Cap<L4::Meta>(src);
+  _src = &__src;
 
   auto __ret = ___self->copy(*_src);
 
-  cppbind::c::init_owning_struct<L4::Cap<L4::Meta>>(&__out, __ret);
-  return __out;
+  return __ret.cap();
 }
 
-unsigned long l4_cap_l4_meta_cap(const struct l4_cap_l4_meta * __self)
+unsigned long l4_cap_l4_meta_cap(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   const L4::Cap<L4::Meta> * ___self;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<L4::Meta>>(__self);
+  auto ____self = L4::Cap<L4::Meta>(__self);
+  ___self = &____self;
 
   auto __ret = ___self->cap();
 
   return __ret;
 }
 
-int l4_cap_l4_meta_is_valid(const struct l4_cap_l4_meta * __self)
+int l4_cap_l4_meta_is_valid(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   const L4::Cap<L4::Meta> * ___self;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<L4::Meta>>(__self);
+  auto ____self = L4::Cap<L4::Meta>(__self);
+  ___self = &____self;
 
   auto __ret = ___self->is_valid();
 
   return __ret;
 }
 
-unsigned long l4_cap_l4_meta_snd_base(const struct l4_cap_l4_meta * __self, unsigned int grant, unsigned long base)
+unsigned long l4_cap_l4_meta_snd_base(l4_cap_idx_t __self, unsigned int grant, unsigned long base)
 {
   using namespace L4;
 
@@ -511,8 +479,8 @@ unsigned long l4_cap_l4_meta_snd_base(const struct l4_cap_l4_meta * __self, unsi
   unsigned long _base = L4_INVALID_CAP;
 
   do {
-    assert(__self->is_initialized);
-    ___self = cppbind::c::struct_cast<const L4::Cap<L4::Meta>>(__self);
+    auto ____self = L4::Cap<L4::Meta>(__self);
+    ___self = &____self;
 
     _grant = grant;
 
@@ -524,15 +492,14 @@ unsigned long l4_cap_l4_meta_snd_base(const struct l4_cap_l4_meta * __self, unsi
   return __ret;
 }
 
-void l4_cap_l4_meta_invalidate(struct l4_cap_l4_meta * __self)
+void l4_cap_l4_meta_invalidate(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   L4::Cap<L4::Meta> * ___self;
 
-  assert(__self->is_initialized);
-  assert(!__self->is_const);
-  ___self = cppbind::c::struct_cast<L4::Cap<L4::Meta>>(__self);
+  auto ____self = L4::Cap<L4::Meta>(__self);
+  ___self = &____self;
 
   ___self->invalidate();
 }
@@ -645,12 +612,15 @@ struct l4_cap_base l4_cap_base_copy(const struct l4_cap_base * _1)
   assert(_1->is_initialized);
   __1 = cppbind::c::struct_cast<const L4::Cap_base>(_1);
 
+  char __tmp[64];
+
+  auto __ret = new (__tmp) L4::Cap_base(*__1);
+
+  static_cast<void>(__ret);
+
   struct l4_cap_base __out;
-
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap_base>(&__ret, *__1);
-
-  return __ret;
+  cppbind::c::make_owning_struct_mem<L4::Cap_base>(&__out, __tmp);
+  return __out;
 }
 
 struct l4_cap_base l4_cap_base_move(struct l4_cap_base * _1)
@@ -663,12 +633,15 @@ struct l4_cap_base l4_cap_base_move(struct l4_cap_base * _1)
   assert(!_1->is_const);
   __1 = cppbind::c::struct_cast<L4::Cap_base>(_1);
 
+  char __tmp[64];
+
+  auto __ret = new (__tmp) L4::Cap_base(std::move(*__1));
+
+  static_cast<void>(__ret);
+
   struct l4_cap_base __out;
-
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap_base>(&__ret, std::move(*__1));
-
-  return __ret;
+  cppbind::c::make_owning_struct_mem<L4::Cap_base>(&__out, __tmp);
+  return __out;
 }
 
 void l4_cap_base_delete(struct l4_cap_base * __self)
@@ -683,7 +656,7 @@ void l4_cap_base_delete(struct l4_cap_base * __self)
   ___self->~Cap_base();
 }
 
-struct l4_cap_void l4_cap_void_new_1(const void * p)
+l4_cap_idx_t l4_cap_void_new_1(const void * p)
 {
   using namespace L4;
 
@@ -691,15 +664,14 @@ struct l4_cap_void l4_cap_void_new_1(const void * p)
 
   _p = p;
 
-  struct l4_cap_void __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<void>>(&__ret, _p);
+  auto __ret = new (__tmp) L4::Cap<void>(_p);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_void l4_cap_void_new_2(unsigned long cap)
+l4_cap_idx_t l4_cap_void_new_2(unsigned long cap)
 {
   using namespace L4;
 
@@ -707,15 +679,14 @@ struct l4_cap_void l4_cap_void_new_2(unsigned long cap)
 
   _cap = static_cast<L4::Cap_base::Cap_type>(cap);
 
-  struct l4_cap_void __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<void>>(&__ret, _cap);
+  auto __ret = new (__tmp) L4::Cap<void>(_cap);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_void l4_cap_void_new_3(unsigned int cap)
+l4_cap_idx_t l4_cap_void_new_3(unsigned int cap)
 {
   using namespace L4;
 
@@ -723,15 +694,14 @@ struct l4_cap_void l4_cap_void_new_3(unsigned int cap)
 
   _cap = static_cast<l4_default_caps_t>(cap);
 
-  struct l4_cap_void __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<void>>(&__ret, _cap);
+  auto __ret = new (__tmp) L4::Cap<void>(_cap);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_void l4_cap_void_new_4(unsigned long idx)
+l4_cap_idx_t l4_cap_void_new_4(unsigned long idx)
 {
   using namespace L4;
 
@@ -741,15 +711,14 @@ struct l4_cap_void l4_cap_void_new_4(unsigned long idx)
     _idx = idx;
   } while(false);
 
-  struct l4_cap_void __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<void>>(&__ret, _idx);
+  auto __ret = new (__tmp) L4::Cap<void>(_idx);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_void l4_cap_void_new_5(unsigned int _1)
+l4_cap_idx_t l4_cap_void_new_5(unsigned int _1)
 {
   using namespace L4;
 
@@ -757,149 +726,138 @@ struct l4_cap_void l4_cap_void_new_5(unsigned int _1)
 
   __1 = static_cast<L4::Cap_base::No_init_type>(_1);
 
-  struct l4_cap_void __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<void>>(&__ret, __1);
+  auto __ret = new (__tmp) L4::Cap<void>(__1);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_void l4_cap_void_move_1(const struct l4_cap_void * __self, const struct l4_cap_void * src)
+l4_cap_idx_t l4_cap_void_move_1(l4_cap_idx_t __self, l4_cap_idx_t src)
 {
   using namespace L4;
 
   const L4::Cap<void> * ___self;
   const L4::Cap<void> * _src;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<void>>(__self);
+  auto ____self = L4::Cap<void>(__self);
+  ___self = &____self;
 
-  assert(src->is_initialized);
-  _src = cppbind::c::struct_cast<const L4::Cap<void>>(src);
-
-  struct l4_cap_void __out;
+  auto __src = L4::Cap<void>(src);
+  _src = &__src;
 
   auto __ret = ___self->move(*_src);
 
-  cppbind::c::init_owning_struct<L4::Cap<void>>(&__out, __ret);
-  return __out;
+  return __ret.cap();
 }
 
-struct l4_cap_void l4_cap_void_copy_1(const struct l4_cap_void * __self, const struct l4_cap_void * src)
+l4_cap_idx_t l4_cap_void_copy_1(l4_cap_idx_t __self, l4_cap_idx_t src)
 {
   using namespace L4;
 
   const L4::Cap<void> * ___self;
   const L4::Cap<void> * _src;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<void>>(__self);
+  auto ____self = L4::Cap<void>(__self);
+  ___self = &____self;
 
-  assert(src->is_initialized);
-  _src = cppbind::c::struct_cast<const L4::Cap<void>>(src);
-
-  struct l4_cap_void __out;
+  auto __src = L4::Cap<void>(src);
+  _src = &__src;
 
   auto __ret = ___self->copy(*_src);
 
-  cppbind::c::init_owning_struct<L4::Cap<void>>(&__out, __ret);
-  return __out;
+  return __ret.cap();
 }
 
-struct l4_cap_void l4_cap_void_copy_2(const struct l4_cap_void * _1)
+l4_cap_idx_t l4_cap_void_copy_2(l4_cap_idx_t _1)
 {
   using namespace L4;
 
   const L4::Cap<void> * __1;
 
-  assert(_1->is_initialized);
-  __1 = cppbind::c::struct_cast<const L4::Cap<void>>(_1);
+  auto ___1 = L4::Cap<void>(_1);
+  __1 = &___1;
 
-  struct l4_cap_void __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<void>>(&__ret, *__1);
+  auto __ret = new (__tmp) L4::Cap<void>(*__1);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_void l4_cap_void_move_2(struct l4_cap_void * _1)
+l4_cap_idx_t l4_cap_void_move_2(l4_cap_idx_t _1)
 {
   using namespace L4;
 
   L4::Cap<void> * __1;
 
-  assert(_1->is_initialized);
-  assert(!_1->is_const);
-  __1 = cppbind::c::struct_cast<L4::Cap<void>>(_1);
+  auto ___1 = L4::Cap<void>(_1);
+  __1 = &___1;
 
-  struct l4_cap_void __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<void>>(&__ret, std::move(*__1));
+  auto __ret = new (__tmp) L4::Cap<void>(std::move(*__1));
 
-  return __ret;
+  return __ret->cap();
 }
 
-void l4_cap_void_delete(struct l4_cap_void * __self)
+void l4_cap_void_delete(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   L4::Cap<void> * ___self;
 
-  if (!__self->is_initialized) return;
-  ___self = cppbind::c::struct_cast<L4::Cap<void>>(__self);
+  auto ____self = L4::Cap<void>(__self);
+  ___self = &____self;
 
   ___self->~Cap<void>();
 }
 
-struct l4_cap_void l4_cap_void_new_void(const struct l4_cap_void * o)
+l4_cap_idx_t l4_cap_void_new_void(l4_cap_idx_t o)
 {
   using namespace L4;
 
   const L4::Cap<void> * _o;
 
-  assert(o->is_initialized);
-  _o = cppbind::c::struct_cast<const L4::Cap<void>>(o);
+  auto __o = L4::Cap<void>(o);
+  _o = &__o;
 
-  struct l4_cap_void __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<void>>(&__ret, *_o);
+  auto __ret = new (__tmp) L4::Cap<void>(*_o);
 
-  return __ret;
+  return __ret->cap();
 }
 
-unsigned long l4_cap_void_cap(const struct l4_cap_void * __self)
+unsigned long l4_cap_void_cap(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   const L4::Cap<void> * ___self;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<void>>(__self);
+  auto ____self = L4::Cap<void>(__self);
+  ___self = &____self;
 
   auto __ret = ___self->cap();
 
   return __ret;
 }
 
-int l4_cap_void_is_valid(const struct l4_cap_void * __self)
+int l4_cap_void_is_valid(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   const L4::Cap<void> * ___self;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<void>>(__self);
+  auto ____self = L4::Cap<void>(__self);
+  ___self = &____self;
 
   auto __ret = ___self->is_valid();
 
   return __ret;
 }
 
-unsigned long l4_cap_void_snd_base(const struct l4_cap_void * __self, unsigned int grant, unsigned long base)
+unsigned long l4_cap_void_snd_base(l4_cap_idx_t __self, unsigned int grant, unsigned long base)
 {
   using namespace L4;
 
@@ -908,8 +866,8 @@ unsigned long l4_cap_void_snd_base(const struct l4_cap_void * __self, unsigned i
   unsigned long _base = L4_INVALID_CAP;
 
   do {
-    assert(__self->is_initialized);
-    ___self = cppbind::c::struct_cast<const L4::Cap<void>>(__self);
+    auto ____self = L4::Cap<void>(__self);
+    ___self = &____self;
 
     _grant = grant;
 
@@ -921,15 +879,15 @@ unsigned long l4_cap_void_snd_base(const struct l4_cap_void * __self, unsigned i
   return __ret;
 }
 
-int l4_cap_void_op_equalequal(const struct l4_cap_void * __self, const struct l4_cap_base * o)
+int l4_cap_void_op_equalequal(l4_cap_idx_t __self, const struct l4_cap_base * o)
 {
   using namespace L4;
 
   const L4::Cap<void> * ___self;
   const L4::Cap_base * _o;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<void>>(__self);
+  auto ____self = L4::Cap<void>(__self);
+  ___self = &____self;
 
   assert(o->is_initialized);
   _o = cppbind::c::struct_cast<const L4::Cap_base>(o);
@@ -939,15 +897,15 @@ int l4_cap_void_op_equalequal(const struct l4_cap_void * __self, const struct l4
   return __ret;
 }
 
-int l4_cap_void_op_exclaimequal(const struct l4_cap_void * __self, const struct l4_cap_base * o)
+int l4_cap_void_op_exclaimequal(l4_cap_idx_t __self, const struct l4_cap_base * o)
 {
   using namespace L4;
 
   const L4::Cap<void> * ___self;
   const L4::Cap_base * _o;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<void>>(__self);
+  auto ____self = L4::Cap<void>(__self);
+  ___self = &____self;
 
   assert(o->is_initialized);
   _o = cppbind::c::struct_cast<const L4::Cap_base>(o);
@@ -957,20 +915,19 @@ int l4_cap_void_op_exclaimequal(const struct l4_cap_void * __self, const struct 
   return __ret;
 }
 
-void l4_cap_void_invalidate(struct l4_cap_void * __self)
+void l4_cap_void_invalidate(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   L4::Cap<void> * ___self;
 
-  assert(__self->is_initialized);
-  assert(!__self->is_const);
-  ___self = cppbind::c::struct_cast<L4::Cap<void>>(__self);
+  auto ____self = L4::Cap<void>(__self);
+  ___self = &____self;
 
   ___self->invalidate();
 }
 
-struct l4_cap_calc l4_cap_calc_new_1(unsigned long cap)
+l4_cap_idx_t l4_cap_calc_new_1(unsigned long cap)
 {
   using namespace L4;
 
@@ -978,15 +935,14 @@ struct l4_cap_calc l4_cap_calc_new_1(unsigned long cap)
 
   _cap = static_cast<L4::Cap_base::Cap_type>(cap);
 
-  struct l4_cap_calc __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<Calc>>(&__ret, _cap);
+  auto __ret = new (__tmp) L4::Cap<Calc>(_cap);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_calc l4_cap_calc_new_2(unsigned int cap)
+l4_cap_idx_t l4_cap_calc_new_2(unsigned int cap)
 {
   using namespace L4;
 
@@ -994,15 +950,14 @@ struct l4_cap_calc l4_cap_calc_new_2(unsigned int cap)
 
   _cap = static_cast<l4_default_caps_t>(cap);
 
-  struct l4_cap_calc __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<Calc>>(&__ret, _cap);
+  auto __ret = new (__tmp) L4::Cap<Calc>(_cap);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_calc l4_cap_calc_new_3(unsigned long idx)
+l4_cap_idx_t l4_cap_calc_new_3(unsigned long idx)
 {
   using namespace L4;
 
@@ -1012,15 +967,14 @@ struct l4_cap_calc l4_cap_calc_new_3(unsigned long idx)
     _idx = idx;
   } while(false);
 
-  struct l4_cap_calc __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<Calc>>(&__ret, _idx);
+  auto __ret = new (__tmp) L4::Cap<Calc>(_idx);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_calc l4_cap_calc_new_4(unsigned int _1)
+l4_cap_idx_t l4_cap_calc_new_4(unsigned int _1)
 {
   using namespace L4;
 
@@ -1028,166 +982,154 @@ struct l4_cap_calc l4_cap_calc_new_4(unsigned int _1)
 
   __1 = static_cast<L4::Cap_base::No_init_type>(_1);
 
-  struct l4_cap_calc __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<Calc>>(&__ret, __1);
+  auto __ret = new (__tmp) L4::Cap<Calc>(__1);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_calc l4_cap_calc_move_1(const struct l4_cap_calc * __self, const struct l4_cap_calc * src)
+l4_cap_idx_t l4_cap_calc_move_1(l4_cap_idx_t __self, l4_cap_idx_t src)
 {
   using namespace L4;
 
   const L4::Cap<Calc> * ___self;
   const L4::Cap<Calc> * _src;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<Calc>>(__self);
+  auto ____self = L4::Cap<Calc>(__self);
+  ___self = &____self;
 
-  assert(src->is_initialized);
-  _src = cppbind::c::struct_cast<const L4::Cap<Calc>>(src);
-
-  struct l4_cap_calc __out;
+  auto __src = L4::Cap<Calc>(src);
+  _src = &__src;
 
   auto __ret = ___self->move(*_src);
 
-  cppbind::c::init_owning_struct<L4::Cap<Calc>>(&__out, __ret);
-  return __out;
+  return __ret.cap();
 }
 
-struct l4_cap_calc l4_cap_calc_copy_1(const struct l4_cap_calc * __self, const struct l4_cap_calc * src)
+l4_cap_idx_t l4_cap_calc_copy_1(l4_cap_idx_t __self, l4_cap_idx_t src)
 {
   using namespace L4;
 
   const L4::Cap<Calc> * ___self;
   const L4::Cap<Calc> * _src;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<Calc>>(__self);
+  auto ____self = L4::Cap<Calc>(__self);
+  ___self = &____self;
 
-  assert(src->is_initialized);
-  _src = cppbind::c::struct_cast<const L4::Cap<Calc>>(src);
-
-  struct l4_cap_calc __out;
+  auto __src = L4::Cap<Calc>(src);
+  _src = &__src;
 
   auto __ret = ___self->copy(*_src);
 
-  cppbind::c::init_owning_struct<L4::Cap<Calc>>(&__out, __ret);
-  return __out;
+  return __ret.cap();
 }
 
-struct calc l4_cap_calc_access(const struct l4_cap_calc * __self)
+struct calc l4_cap_calc_access(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   const L4::Cap<Calc> * ___self;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<Calc>>(__self);
-
-  struct calc __out;
+  auto ____self = L4::Cap<Calc>(__self);
+  ___self = &____self;
 
   auto __ret = ___self->operator->();
 
-  cppbind::c::init_non_owning_struct(&__out, __ret);
+  struct calc __out;
+  cppbind::c::make_non_owning_struct(&__out, __ret);
   return __out;
 }
 
-struct l4_cap_calc l4_cap_calc_copy_2(const struct l4_cap_calc * _1)
+l4_cap_idx_t l4_cap_calc_copy_2(l4_cap_idx_t _1)
 {
   using namespace L4;
 
   const L4::Cap<Calc> * __1;
 
-  assert(_1->is_initialized);
-  __1 = cppbind::c::struct_cast<const L4::Cap<Calc>>(_1);
+  auto ___1 = L4::Cap<Calc>(_1);
+  __1 = &___1;
 
-  struct l4_cap_calc __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<Calc>>(&__ret, *__1);
+  auto __ret = new (__tmp) L4::Cap<Calc>(*__1);
 
-  return __ret;
+  return __ret->cap();
 }
 
-struct l4_cap_calc l4_cap_calc_move_2(struct l4_cap_calc * _1)
+l4_cap_idx_t l4_cap_calc_move_2(l4_cap_idx_t _1)
 {
   using namespace L4;
 
   L4::Cap<Calc> * __1;
 
-  assert(_1->is_initialized);
-  assert(!_1->is_const);
-  __1 = cppbind::c::struct_cast<L4::Cap<Calc>>(_1);
+  auto ___1 = L4::Cap<Calc>(_1);
+  __1 = &___1;
 
-  struct l4_cap_calc __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<Calc>>(&__ret, std::move(*__1));
+  auto __ret = new (__tmp) L4::Cap<Calc>(std::move(*__1));
 
-  return __ret;
+  return __ret->cap();
 }
 
-void l4_cap_calc_delete(struct l4_cap_calc * __self)
+void l4_cap_calc_delete(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   L4::Cap<Calc> * ___self;
 
-  if (!__self->is_initialized) return;
-  ___self = cppbind::c::struct_cast<L4::Cap<Calc>>(__self);
+  auto ____self = L4::Cap<Calc>(__self);
+  ___self = &____self;
 
   ___self->~Cap<Calc>();
 }
 
-struct l4_cap_calc l4_cap_calc_new_calc(const struct l4_cap_calc * o)
+l4_cap_idx_t l4_cap_calc_new_calc(l4_cap_idx_t o)
 {
   using namespace L4;
 
   const L4::Cap<Calc> * _o;
 
-  assert(o->is_initialized);
-  _o = cppbind::c::struct_cast<const L4::Cap<Calc>>(o);
+  auto __o = L4::Cap<Calc>(o);
+  _o = &__o;
 
-  struct l4_cap_calc __out;
+  char __tmp[64];
 
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4::Cap<Calc>>(&__ret, *_o);
+  auto __ret = new (__tmp) L4::Cap<Calc>(*_o);
 
-  return __ret;
+  return __ret->cap();
 }
 
-unsigned long l4_cap_calc_cap(const struct l4_cap_calc * __self)
+unsigned long l4_cap_calc_cap(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   const L4::Cap<Calc> * ___self;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<Calc>>(__self);
+  auto ____self = L4::Cap<Calc>(__self);
+  ___self = &____self;
 
   auto __ret = ___self->cap();
 
   return __ret;
 }
 
-int l4_cap_calc_is_valid(const struct l4_cap_calc * __self)
+int l4_cap_calc_is_valid(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   const L4::Cap<Calc> * ___self;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<Calc>>(__self);
+  auto ____self = L4::Cap<Calc>(__self);
+  ___self = &____self;
 
   auto __ret = ___self->is_valid();
 
   return __ret;
 }
 
-unsigned long l4_cap_calc_snd_base(const struct l4_cap_calc * __self, unsigned int grant, unsigned long base)
+unsigned long l4_cap_calc_snd_base(l4_cap_idx_t __self, unsigned int grant, unsigned long base)
 {
   using namespace L4;
 
@@ -1196,8 +1138,8 @@ unsigned long l4_cap_calc_snd_base(const struct l4_cap_calc * __self, unsigned i
   unsigned long _base = L4_INVALID_CAP;
 
   do {
-    assert(__self->is_initialized);
-    ___self = cppbind::c::struct_cast<const L4::Cap<Calc>>(__self);
+    auto ____self = L4::Cap<Calc>(__self);
+    ___self = &____self;
 
     _grant = grant;
 
@@ -1209,15 +1151,15 @@ unsigned long l4_cap_calc_snd_base(const struct l4_cap_calc * __self, unsigned i
   return __ret;
 }
 
-int l4_cap_calc_op_equalequal(const struct l4_cap_calc * __self, const struct l4_cap_base * o)
+int l4_cap_calc_op_equalequal(l4_cap_idx_t __self, const struct l4_cap_base * o)
 {
   using namespace L4;
 
   const L4::Cap<Calc> * ___self;
   const L4::Cap_base * _o;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<Calc>>(__self);
+  auto ____self = L4::Cap<Calc>(__self);
+  ___self = &____self;
 
   assert(o->is_initialized);
   _o = cppbind::c::struct_cast<const L4::Cap_base>(o);
@@ -1227,15 +1169,15 @@ int l4_cap_calc_op_equalequal(const struct l4_cap_calc * __self, const struct l4
   return __ret;
 }
 
-int l4_cap_calc_op_exclaimequal(const struct l4_cap_calc * __self, const struct l4_cap_base * o)
+int l4_cap_calc_op_exclaimequal(l4_cap_idx_t __self, const struct l4_cap_base * o)
 {
   using namespace L4;
 
   const L4::Cap<Calc> * ___self;
   const L4::Cap_base * _o;
 
-  assert(__self->is_initialized);
-  ___self = cppbind::c::struct_cast<const L4::Cap<Calc>>(__self);
+  auto ____self = L4::Cap<Calc>(__self);
+  ___self = &____self;
 
   assert(o->is_initialized);
   _o = cppbind::c::struct_cast<const L4::Cap_base>(o);
@@ -1245,15 +1187,14 @@ int l4_cap_calc_op_exclaimequal(const struct l4_cap_calc * __self, const struct 
   return __ret;
 }
 
-void l4_cap_calc_invalidate(struct l4_cap_calc * __self)
+void l4_cap_calc_invalidate(l4_cap_idx_t __self)
 {
   using namespace L4;
 
   L4::Cap<Calc> * ___self;
 
-  assert(__self->is_initialized);
-  assert(!__self->is_const);
-  ___self = cppbind::c::struct_cast<L4::Cap<Calc>>(__self);
+  auto ____self = L4::Cap<Calc>(__self);
+  ___self = &____self;
 
   ___self->invalidate();
 }

@@ -40,15 +40,14 @@ struct l4_re_env l4_re_env_env(void)
 {
   using namespace L4Re;
 
-  struct l4_re_env __out;
-
   auto __ret = L4Re::Env::env();
 
-  cppbind::c::init_non_owning_struct(&__out, __ret);
+  struct l4_re_env __out;
+  cppbind::c::make_non_owning_struct(&__out, __ret);
   return __out;
 }
 
-struct l4_cap_l4_task l4_re_env_task(const struct l4_re_env * __self)
+l4_cap_idx_t l4_re_env_task(const struct l4_re_env * __self)
 {
   using namespace L4Re;
 
@@ -57,12 +56,9 @@ struct l4_cap_l4_task l4_re_env_task(const struct l4_re_env * __self)
   assert(__self->is_initialized);
   ___self = cppbind::c::struct_cast<const L4Re::Env>(__self);
 
-  struct l4_cap_l4_task __out;
-
   auto __ret = ___self->task();
 
-  cppbind::c::init_owning_struct<L4::Cap<L4::Task>>(&__out, __ret);
-  return __out;
+  return __ret.cap();
 }
 
 unsigned long l4_re_env_first_free_cap_1(const struct l4_re_env * __self)
@@ -129,12 +125,15 @@ struct l4_re_env l4_re_env_new(void)
 {
   using namespace L4Re;
 
+  char __tmp[704];
+
+  auto __ret = new (__tmp) L4Re::Env();
+
+  static_cast<void>(__ret);
+
   struct l4_re_env __out;
-
-  auto __ret = __out;
-  cppbind::c::init_owning_struct<L4Re::Env>(&__ret);
-
-  return __ret;
+  cppbind::c::make_owning_struct_mem<L4Re::Env>(&__out, __tmp);
+  return __out;
 }
 
 void l4_re_env_delete(struct l4_re_env * __self)
@@ -149,7 +148,7 @@ void l4_re_env_delete(struct l4_re_env * __self)
   ___self->~Env();
 }
 
-struct l4_cap_calc l4_re_env_get_cap_calc_1(const struct l4_re_env * __self, const char * name, unsigned int l)
+l4_cap_idx_t l4_re_env_get_cap_calc_1(const struct l4_re_env * __self, const char * name, unsigned int l)
 {
   using namespace L4Re;
 
@@ -164,15 +163,12 @@ struct l4_cap_calc l4_re_env_get_cap_calc_1(const struct l4_re_env * __self, con
 
   _l = l;
 
-  struct l4_cap_calc __out;
-
   auto __ret = ___self->get_cap<Calc>(_name, _l);
 
-  cppbind::c::init_owning_struct<L4::Cap<Calc>>(&__out, __ret);
-  return __out;
+  return __ret.cap();
 }
 
-struct l4_cap_calc l4_re_env_get_cap_calc_2(const struct l4_re_env * __self, const char * name)
+l4_cap_idx_t l4_re_env_get_cap_calc_2(const struct l4_re_env * __self, const char * name)
 {
   using namespace L4Re;
 
@@ -184,12 +180,9 @@ struct l4_cap_calc l4_re_env_get_cap_calc_2(const struct l4_re_env * __self, con
 
   _name = name;
 
-  struct l4_cap_calc __out;
-
   auto __ret = ___self->get_cap<Calc>(_name);
 
-  cppbind::c::init_owning_struct<L4::Cap<Calc>>(&__out, __ret);
-  return __out;
+  return __ret.cap();
 }
 
 } // extern "C"

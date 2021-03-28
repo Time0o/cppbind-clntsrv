@@ -10,15 +10,15 @@ main(void)
 {
   struct l4_re_env env = l4_re_env_env();
 
-  struct l4_cap_calc server_cap = l4_re_env_get_cap_calc_2(&env, "calc_server");
+  l4_cap_idx_t server_cap = l4_re_env_get_cap_calc_2(&env, "calc_server");
 
-  if (!l4_cap_calc_is_valid(&server_cap))
+  if (!l4_cap_calc_is_valid(server_cap))
     {
       printf("Could not get server capability!\n");
       goto error1;
     }
 
-  struct calc server = l4_cap_calc_access(&server_cap);
+  struct calc server = l4_cap_calc_access(server_cap);
 
   l4_int32_t val1 = 8;
   l4_int32_t val2 = 5;
@@ -40,7 +40,7 @@ main(void)
   printf("Result of negate call: %d\n", val1);
 
   l4_re_env_delete(&env);
-  l4_cap_calc_delete(&server_cap);
+  l4_cap_calc_delete(server_cap);
   calc_delete(&server);
 
   return EXIT_SUCCESS;
@@ -48,7 +48,7 @@ main(void)
 error2:
   calc_delete(&server);
 error1:
-  l4_cap_calc_delete(&server_cap);
+  l4_cap_calc_delete(server_cap);
   l4_re_env_delete(&env);
 
   return EXIT_FAILURE;

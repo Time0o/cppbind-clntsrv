@@ -27,7 +27,7 @@ struct l4_re_env
 
 struct l4_re_env l4_re_env_env(void);
 
-struct l4_cap_l4_task l4_re_env_task(const struct l4_re_env * __self);
+l4_cap_idx_t l4_re_env_task(const struct l4_re_env * __self);
 
 unsigned long l4_re_env_first_free_cap_1(const struct l4_re_env * __self);
 
@@ -41,9 +41,9 @@ struct l4_re_env l4_re_env_new(void);
 
 void l4_re_env_delete(struct l4_re_env * __self);
 
-struct l4_cap_calc l4_re_env_get_cap_calc_1(const struct l4_re_env * __self, const char * name, unsigned int l);
+l4_cap_idx_t l4_re_env_get_cap_calc_1(const struct l4_re_env * __self, const char * name, unsigned int l);
 
-struct l4_cap_calc l4_re_env_get_cap_calc_2(const struct l4_re_env * __self, const char * name);
+l4_cap_idx_t l4_re_env_get_cap_calc_2(const struct l4_re_env * __self, const char * name);
 
 #ifdef __cplusplus
 } // extern "C"

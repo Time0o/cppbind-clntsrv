@@ -79,6 +79,7 @@ if __name__ == '__main__':
         cppbind_args += [
             '--wrap-extra-type-aliases', 'type_aliases.cc',
             '--wrap-skip-unwrappable',
+            '--output-custom-type-translation-rules', f'{backend}_type_translation_rules.py',
             '--output-noexcept',
             '--output-directory', 'output',
             '--output-cpp-header-extension', '.h',
