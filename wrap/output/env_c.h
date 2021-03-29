@@ -16,7 +16,7 @@ struct l4_re_env;
 struct l4_re_env
 {
   union {
-    char mem[704];
+    char mem[88];
     void *ptr;
   } obj;
 

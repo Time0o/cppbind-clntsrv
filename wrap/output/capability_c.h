@@ -20,7 +20,7 @@ struct l4_cap_base;
 struct l4_cap_calc
 {
   union {
-    char mem[64];
+    char mem[8];
     void *ptr;
   } obj;
 
@@ -32,7 +32,7 @@ struct l4_cap_calc
 struct l4_cap_l4_kobject
 {
   union {
-    char mem[64];
+    char mem[8];
     void *ptr;
   } obj;
 
@@ -44,7 +44,7 @@ struct l4_cap_l4_kobject
 struct l4_cap_l4_meta
 {
   union {
-    char mem[64];
+    char mem[8];
     void *ptr;
   } obj;
 
@@ -56,7 +56,7 @@ struct l4_cap_l4_meta
 struct l4_cap_l4_task
 {
   union {
-    char mem[64];
+    char mem[8];
     void *ptr;
   } obj;
 
@@ -68,7 +68,7 @@ struct l4_cap_l4_task
 struct l4_cap_void
 {
   union {
-    char mem[64];
+    char mem[8];
     void *ptr;
   } obj;
 
@@ -80,7 +80,7 @@ struct l4_cap_void
 struct l4_cap_base
 {
   union {
-    char mem[64];
+    char mem[8];
     void *ptr;
   } obj;
 

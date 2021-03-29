@@ -15,7 +15,7 @@ extern "C" {
 struct calc
 {
   union {
-    char mem[16];
+    char mem[2];
     void *ptr;
   } obj;
 
@@ -32,7 +32,7 @@ l4_cap_idx_t l4_cap_l4_task_new_1(unsigned long cap)
 
   _cap = static_cast<L4::Cap_base::Cap_type>(cap);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<L4::Task>(_cap);
 
@@ -47,7 +47,7 @@ l4_cap_idx_t l4_cap_l4_task_new_2(unsigned int cap)
 
   _cap = static_cast<l4_default_caps_t>(cap);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<L4::Task>(_cap);
 
@@ -64,7 +64,7 @@ l4_cap_idx_t l4_cap_l4_task_new_3(unsigned long idx)
     _idx = idx;
   } while(false);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<L4::Task>(_idx);
 
@@ -79,7 +79,7 @@ l4_cap_idx_t l4_cap_l4_task_new_4(unsigned int _1)
 
   __1 = static_cast<L4::Cap_base::No_init_type>(_1);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<L4::Task>(__1);
 
@@ -192,7 +192,7 @@ l4_cap_idx_t l4_cap_l4_kobject_new_1(unsigned long cap)
 
   _cap = static_cast<L4::Cap_base::Cap_type>(cap);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<L4::Kobject>(_cap);
 
@@ -207,7 +207,7 @@ l4_cap_idx_t l4_cap_l4_kobject_new_2(unsigned int cap)
 
   _cap = static_cast<l4_default_caps_t>(cap);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<L4::Kobject>(_cap);
 
@@ -224,7 +224,7 @@ l4_cap_idx_t l4_cap_l4_kobject_new_3(unsigned long idx)
     _idx = idx;
   } while(false);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<L4::Kobject>(_idx);
 
@@ -239,7 +239,7 @@ l4_cap_idx_t l4_cap_l4_kobject_new_4(unsigned int _1)
 
   __1 = static_cast<L4::Cap_base::No_init_type>(_1);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<L4::Kobject>(__1);
 
@@ -352,7 +352,7 @@ l4_cap_idx_t l4_cap_l4_meta_new_1(unsigned long cap)
 
   _cap = static_cast<L4::Cap_base::Cap_type>(cap);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<L4::Meta>(_cap);
 
@@ -367,7 +367,7 @@ l4_cap_idx_t l4_cap_l4_meta_new_2(unsigned int cap)
 
   _cap = static_cast<l4_default_caps_t>(cap);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<L4::Meta>(_cap);
 
@@ -384,7 +384,7 @@ l4_cap_idx_t l4_cap_l4_meta_new_3(unsigned long idx)
     _idx = idx;
   } while(false);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<L4::Meta>(_idx);
 
@@ -399,7 +399,7 @@ l4_cap_idx_t l4_cap_l4_meta_new_4(unsigned int _1)
 
   __1 = static_cast<L4::Cap_base::No_init_type>(_1);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<L4::Meta>(__1);
 
@@ -612,7 +612,7 @@ struct l4_cap_base l4_cap_base_copy(const struct l4_cap_base * _1)
   assert(_1->is_initialized);
   __1 = cppbind::c::struct_cast<const L4::Cap_base>(_1);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap_base(*__1);
 
@@ -633,7 +633,7 @@ struct l4_cap_base l4_cap_base_move(struct l4_cap_base * _1)
   assert(!_1->is_const);
   __1 = cppbind::c::struct_cast<L4::Cap_base>(_1);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap_base(std::move(*__1));
 
@@ -664,7 +664,7 @@ l4_cap_idx_t l4_cap_void_new_1(const void * p)
 
   _p = p;
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<void>(_p);
 
@@ -679,7 +679,7 @@ l4_cap_idx_t l4_cap_void_new_2(unsigned long cap)
 
   _cap = static_cast<L4::Cap_base::Cap_type>(cap);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<void>(_cap);
 
@@ -694,7 +694,7 @@ l4_cap_idx_t l4_cap_void_new_3(unsigned int cap)
 
   _cap = static_cast<l4_default_caps_t>(cap);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<void>(_cap);
 
@@ -711,7 +711,7 @@ l4_cap_idx_t l4_cap_void_new_4(unsigned long idx)
     _idx = idx;
   } while(false);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<void>(_idx);
 
@@ -726,7 +726,7 @@ l4_cap_idx_t l4_cap_void_new_5(unsigned int _1)
 
   __1 = static_cast<L4::Cap_base::No_init_type>(_1);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<void>(__1);
 
@@ -778,7 +778,7 @@ l4_cap_idx_t l4_cap_void_copy_2(l4_cap_idx_t _1)
   auto ___1 = L4::Cap<void>(_1);
   __1 = &___1;
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<void>(*__1);
 
@@ -794,7 +794,7 @@ l4_cap_idx_t l4_cap_void_move_2(l4_cap_idx_t _1)
   auto ___1 = L4::Cap<void>(_1);
   __1 = &___1;
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<void>(std::move(*__1));
 
@@ -822,7 +822,7 @@ l4_cap_idx_t l4_cap_void_new_void(l4_cap_idx_t o)
   auto __o = L4::Cap<void>(o);
   _o = &__o;
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<void>(*_o);
 
@@ -935,7 +935,7 @@ l4_cap_idx_t l4_cap_calc_new_1(unsigned long cap)
 
   _cap = static_cast<L4::Cap_base::Cap_type>(cap);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<Calc>(_cap);
 
@@ -950,7 +950,7 @@ l4_cap_idx_t l4_cap_calc_new_2(unsigned int cap)
 
   _cap = static_cast<l4_default_caps_t>(cap);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<Calc>(_cap);
 
@@ -967,7 +967,7 @@ l4_cap_idx_t l4_cap_calc_new_3(unsigned long idx)
     _idx = idx;
   } while(false);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<Calc>(_idx);
 
@@ -982,7 +982,7 @@ l4_cap_idx_t l4_cap_calc_new_4(unsigned int _1)
 
   __1 = static_cast<L4::Cap_base::No_init_type>(_1);
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<Calc>(__1);
 
@@ -1050,7 +1050,7 @@ l4_cap_idx_t l4_cap_calc_copy_2(l4_cap_idx_t _1)
   auto ___1 = L4::Cap<Calc>(_1);
   __1 = &___1;
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<Calc>(*__1);
 
@@ -1066,7 +1066,7 @@ l4_cap_idx_t l4_cap_calc_move_2(l4_cap_idx_t _1)
   auto ___1 = L4::Cap<Calc>(_1);
   __1 = &___1;
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<Calc>(std::move(*__1));
 
@@ -1094,7 +1094,7 @@ l4_cap_idx_t l4_cap_calc_new_calc(l4_cap_idx_t o)
   auto __o = L4::Cap<Calc>(o);
   _o = &__o;
 
-  char __tmp[64];
+  char __tmp[8];
 
   auto __ret = new (__tmp) L4::Cap<Calc>(*_o);
 

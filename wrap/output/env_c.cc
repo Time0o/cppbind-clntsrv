@@ -15,7 +15,7 @@ extern "C" {
 struct l4_cap_calc
 {
   union {
-    char mem[64];
+    char mem[8];
     void *ptr;
   } obj;
 
@@ -27,7 +27,7 @@ struct l4_cap_calc
 struct l4_cap_l4_task
 {
   union {
-    char mem[64];
+    char mem[8];
     void *ptr;
   } obj;
 
@@ -125,7 +125,7 @@ struct l4_re_env l4_re_env_new(void)
 {
   using namespace L4Re;
 
-  char __tmp[704];
+  char __tmp[88];
 
   auto __ret = new (__tmp) L4Re::Env();
 

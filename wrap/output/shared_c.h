@@ -14,7 +14,7 @@ struct calc;
 struct calc
 {
   union {
-    char mem[16];
+    char mem[2];
     void *ptr;
   } obj;
 
