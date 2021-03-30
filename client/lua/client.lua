@@ -1,3 +1,7 @@
+local shared = require 'rom/shared'
+local capability = require 'rom/capability'
+local env = require 'rom/env'
+
 local env = env.L4ReEnv.env()
 
 local server_cap = env:get_cap_calc_2("calc_server")

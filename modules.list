@@ -12,7 +12,10 @@ kernel fiasco -servial_esc
 roottask moe rom/clntsrv.cfg
 module l4re
 module ned
+module lua
 module clntsrv.cfg
-module clntsrv-client-lua
 module client.lua
+module shared.so
+module capability.so
+module env.so
 module clntsrv-server
