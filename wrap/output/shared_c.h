@@ -7,8 +7,6 @@ extern "C" {
 
 #include "cppbind/c/c_util_c.h"
 
-typedef int result_type;
-
 struct calc;
 
 struct calc
@@ -18,9 +16,9 @@ struct calc
     void *ptr;
   } obj;
 
-  int is_initialized;
-  int is_const;
-  int is_owning;
+  char is_initialized;
+  char is_const;
+  char is_owning;
 };
 
 void calc_delete(struct calc * __self);

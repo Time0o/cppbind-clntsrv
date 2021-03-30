@@ -15,12 +15,14 @@ if __name__ == '__main__':
         def __init__(self,
                      path,
                      include_dir=None,
+                     constants=None,
                      functions=None,
                      records=None,
                      template_instantiations=None):
 
             self._path = os.path.join(L4RE_DIR, PKG_DIR, path)
             self._include_dir = include_dir
+            self._constants = constants
             self._functions = functions
             self._records = records
             self._template_instantiations = template_instantiations
@@ -30,6 +32,11 @@ if __name__ == '__main__':
 
             if self._include_dir is not None:
                 args += [f'--extra-arg=-I{self._include_dir}']
+
+            if self._constants is not None:
+                for c in self._constants:
+                    #args += ['--wrap-rule', f'const:hasName("{c}")'] # TODO
+                    args += ['--wrap-rule', f'const:anything()'] # TODO
 
             if self._functions is not None:
                 for f in self._functions:
@@ -50,7 +57,8 @@ if __name__ == '__main__':
                include_dir='../shared',
                records=['Calc']),
         ToWrap('l4re-core/l4sys/include/cxx/capability.h',
-               records=['Cap_base', 'Cap'],
+               constants=['Cap_type', 'No_init_type', 'l4_default_caps_t'],
+               records=['Cap'],
                template_instantiations='capability.tcc'),
         ToWrap('l4re-core/l4re/include/env',
                functions=['env'],
@@ -77,7 +85,6 @@ if __name__ == '__main__':
             cppbind_args += to_wrap.args()
 
         cppbind_args += [
-            '--wrap-extra-type-aliases', 'type_aliases.cc',
             '--wrap-skip-unwrappable',
             '--output-custom-type-translation-rules', f'{backend}_type_translation_rules.py',
             '--output-noexcept',

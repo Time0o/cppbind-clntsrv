@@ -113,13 +113,13 @@ int l4_re_env_first_free_cap_2(lua_State *L)
   using namespace L4Re;
 
   L4Re::Env * ___self;
-  unsigned long _c;
+  l4_cap_idx_t _c;
 
   luaL_checktype(L, 1, LUA_TUSERDATA);
   ___self = cppbind::type_info::typed_pointer_cast<L4Re::Env>(*static_cast<void **>(lua_touserdata(L, 1)));
 
   luaL_checktype(L, 2, LUA_TNUMBER);
-  _c = cppbind::lua::tointegral<unsigned long>(L, 2);
+  _c = cppbind::lua::tointegral<l4_cap_idx_t>(L, 2);
 
   ___self->first_free_cap(_c);
 
@@ -134,13 +134,13 @@ int l4_re_env_first_free_utcb_2(lua_State *L)
   using namespace L4Re;
 
   L4Re::Env * ___self;
-  unsigned long _u;
+  l4_addr_t _u;
 
   luaL_checktype(L, 1, LUA_TUSERDATA);
   ___self = cppbind::type_info::typed_pointer_cast<L4Re::Env>(*static_cast<void **>(lua_touserdata(L, 1)));
 
   luaL_checktype(L, 2, LUA_TNUMBER);
-  _u = cppbind::lua::tointegral<unsigned long>(L, 2);
+  _u = cppbind::lua::tointegral<l4_addr_t>(L, 2);
 
   ___self->first_free_utcb(_u);
 

@@ -12,9 +12,8 @@ namespace cppbind::type_info {
   type_instance<L4::Cap<L4::Task>> _ZTSN2L43CapINS_4TaskEEE;
   type_instance<L4::Cap<L4::Kobject>> _ZTSN2L43CapINS_7KobjectEEE;
   type_instance<L4::Cap<L4::Meta>> _ZTSN2L43CapINS_4MetaEEE;
-  type_instance<L4::Cap_base> _ZTSN2L48Cap_baseE;
-  type_instance<L4::Cap<void>, L4::Cap_base> _ZTSN2L43CapIvEE;
-  type_instance<L4::Cap<Calc>, L4::Cap_base> _ZTSN2L43CapI4CalcEE;
+  type_instance<L4::Cap<void>> _ZTSN2L43CapIvEE;
+  type_instance<L4::Cap<Calc>> _ZTSN2L43CapI4CalcEE;
 }
 
 #include "cppbind/lua/lua_util.h"
@@ -70,20 +69,6 @@ int l4_cap_l4_meta_invalidate(lua_State *L);
 
 } // namespace __L4CapL4Meta
 
-namespace __L4CapBase
-{
-
-int l4_cap_base_cap(lua_State *L);
-int l4_cap_base_is_valid(lua_State *L);
-int l4_cap_base_snd_base(lua_State *L);
-int l4_cap_base_op_equalequal(lua_State *L);
-int l4_cap_base_op_exclaimequal(lua_State *L);
-int l4_cap_base_invalidate(lua_State *L);
-int l4_cap_base_copy(lua_State *L);
-int l4_cap_base_move(lua_State *L);
-
-} // namespace __L4CapBase
-
 namespace __L4CapVoid
 {
 
@@ -100,8 +85,6 @@ int l4_cap_void_new_void(lua_State *L);
 int l4_cap_void_cap(lua_State *L);
 int l4_cap_void_is_valid(lua_State *L);
 int l4_cap_void_snd_base(lua_State *L);
-int l4_cap_void_op_equalequal(lua_State *L);
-int l4_cap_void_op_exclaimequal(lua_State *L);
 int l4_cap_void_invalidate(lua_State *L);
 
 } // namespace __L4CapVoid
@@ -122,8 +105,6 @@ int l4_cap_calc_new_calc(lua_State *L);
 int l4_cap_calc_cap(lua_State *L);
 int l4_cap_calc_is_valid(lua_State *L);
 int l4_cap_calc_snd_base(lua_State *L);
-int l4_cap_calc_op_equalequal(lua_State *L);
-int l4_cap_calc_op_exclaimequal(lua_State *L);
 int l4_cap_calc_invalidate(lua_State *L);
 
 } // namespace __L4CapCalc
@@ -176,12 +157,12 @@ int l4_cap_l4_task_new_3(lua_State *L)
 
   using namespace L4;
 
-  unsigned long _idx = L4_INVALID_CAP;
+  l4_cap_idx_t _idx = L4_INVALID_CAP;
 
   do {
     if (lua_gettop(L) < 1) break;
     luaL_checktype(L, 1, LUA_TNUMBER);
-    _idx = cppbind::lua::tointegral<unsigned long>(L, 1);
+    _idx = cppbind::lua::tointegral<l4_cap_idx_t>(L, 1);
   } while(false);
 
   auto __ret = new L4::Cap<L4::Task>(_idx);
@@ -301,7 +282,7 @@ int l4_cap_l4_task_snd_base(lua_State *L)
 
   const L4::Cap<L4::Task> * ___self;
   unsigned int _grant = 0;
-  unsigned long _base = L4_INVALID_CAP;
+  l4_cap_idx_t _base = L4_INVALID_CAP;
 
   do {
     luaL_checktype(L, 1, LUA_TUSERDATA);
@@ -313,7 +294,7 @@ int l4_cap_l4_task_snd_base(lua_State *L)
 
     if (lua_gettop(L) < 3) break;
     luaL_checktype(L, 3, LUA_TNUMBER);
-    _base = cppbind::lua::tointegral<unsigned long>(L, 3);
+    _base = cppbind::lua::tointegral<l4_cap_idx_t>(L, 3);
   } while(false);
 
   auto __ret = ___self->snd_base(_grant, _base);
@@ -408,12 +389,12 @@ int l4_cap_l4_kobject_new_3(lua_State *L)
 
   using namespace L4;
 
-  unsigned long _idx = L4_INVALID_CAP;
+  l4_cap_idx_t _idx = L4_INVALID_CAP;
 
   do {
     if (lua_gettop(L) < 1) break;
     luaL_checktype(L, 1, LUA_TNUMBER);
-    _idx = cppbind::lua::tointegral<unsigned long>(L, 1);
+    _idx = cppbind::lua::tointegral<l4_cap_idx_t>(L, 1);
   } while(false);
 
   auto __ret = new L4::Cap<L4::Kobject>(_idx);
@@ -533,7 +514,7 @@ int l4_cap_l4_kobject_snd_base(lua_State *L)
 
   const L4::Cap<L4::Kobject> * ___self;
   unsigned int _grant = 0;
-  unsigned long _base = L4_INVALID_CAP;
+  l4_cap_idx_t _base = L4_INVALID_CAP;
 
   do {
     luaL_checktype(L, 1, LUA_TUSERDATA);
@@ -545,7 +526,7 @@ int l4_cap_l4_kobject_snd_base(lua_State *L)
 
     if (lua_gettop(L) < 3) break;
     luaL_checktype(L, 3, LUA_TNUMBER);
-    _base = cppbind::lua::tointegral<unsigned long>(L, 3);
+    _base = cppbind::lua::tointegral<l4_cap_idx_t>(L, 3);
   } while(false);
 
   auto __ret = ___self->snd_base(_grant, _base);
@@ -640,12 +621,12 @@ int l4_cap_l4_meta_new_3(lua_State *L)
 
   using namespace L4;
 
-  unsigned long _idx = L4_INVALID_CAP;
+  l4_cap_idx_t _idx = L4_INVALID_CAP;
 
   do {
     if (lua_gettop(L) < 1) break;
     luaL_checktype(L, 1, LUA_TNUMBER);
-    _idx = cppbind::lua::tointegral<unsigned long>(L, 1);
+    _idx = cppbind::lua::tointegral<l4_cap_idx_t>(L, 1);
   } while(false);
 
   auto __ret = new L4::Cap<L4::Meta>(_idx);
@@ -765,7 +746,7 @@ int l4_cap_l4_meta_snd_base(lua_State *L)
 
   const L4::Cap<L4::Meta> * ___self;
   unsigned int _grant = 0;
-  unsigned long _base = L4_INVALID_CAP;
+  l4_cap_idx_t _base = L4_INVALID_CAP;
 
   do {
     luaL_checktype(L, 1, LUA_TUSERDATA);
@@ -777,7 +758,7 @@ int l4_cap_l4_meta_snd_base(lua_State *L)
 
     if (lua_gettop(L) < 3) break;
     luaL_checktype(L, 3, LUA_TNUMBER);
-    _base = cppbind::lua::tointegral<unsigned long>(L, 3);
+    _base = cppbind::lua::tointegral<l4_cap_idx_t>(L, 3);
   } while(false);
 
   auto __ret = ___self->snd_base(_grant, _base);
@@ -823,193 +804,6 @@ void __register(lua_State *L)
 }
 
 } // namespace __L4CapL4Meta
-
-namespace __L4CapBase
-{
-
-int l4_cap_base_cap(lua_State *L)
-{
-  if (lua_gettop(L) != 1)
-    return luaL_error(L, "function expects 1 arguments");
-
-  using namespace L4;
-
-  const L4::Cap_base * ___self;
-
-  luaL_checktype(L, 1, LUA_TUSERDATA);
-  ___self = cppbind::type_info::typed_pointer_cast<const L4::Cap_base>(*static_cast<void **>(lua_touserdata(L, 1)));
-
-  auto __ret = ___self->cap();
-
-  cppbind::lua::pushintegral(L, __ret);
-  return 1;
-}
-
-int l4_cap_base_is_valid(lua_State *L)
-{
-  if (lua_gettop(L) != 1)
-    return luaL_error(L, "function expects 1 arguments");
-
-  using namespace L4;
-
-  const L4::Cap_base * ___self;
-
-  luaL_checktype(L, 1, LUA_TUSERDATA);
-  ___self = cppbind::type_info::typed_pointer_cast<const L4::Cap_base>(*static_cast<void **>(lua_touserdata(L, 1)));
-
-  auto __ret = ___self->is_valid();
-
-  lua_pushboolean(L, __ret);
-  return 1;
-}
-
-int l4_cap_base_snd_base(lua_State *L)
-{
-  if (lua_gettop(L) < 1 || lua_gettop(L) > 3)
-    return luaL_error(L, "function expects between 1 and 3 arguments");
-
-  using namespace L4;
-
-  const L4::Cap_base * ___self;
-  unsigned int _grant = 0;
-  unsigned long _base = L4_INVALID_CAP;
-
-  do {
-    luaL_checktype(L, 1, LUA_TUSERDATA);
-    ___self = cppbind::type_info::typed_pointer_cast<const L4::Cap_base>(*static_cast<void **>(lua_touserdata(L, 1)));
-
-    if (lua_gettop(L) < 2) break;
-    luaL_checktype(L, 2, LUA_TNUMBER);
-    _grant = cppbind::lua::tointegral<unsigned int>(L, 2);
-
-    if (lua_gettop(L) < 3) break;
-    luaL_checktype(L, 3, LUA_TNUMBER);
-    _base = cppbind::lua::tointegral<unsigned long>(L, 3);
-  } while(false);
-
-  auto __ret = ___self->snd_base(_grant, _base);
-
-  cppbind::lua::pushintegral(L, __ret);
-  return 1;
-}
-
-int l4_cap_base_op_equalequal(lua_State *L)
-{
-  if (lua_gettop(L) != 2)
-    return luaL_error(L, "function expects 2 arguments");
-
-  using namespace L4;
-
-  const L4::Cap_base * ___self;
-  const L4::Cap_base * _o;
-
-  luaL_checktype(L, 1, LUA_TUSERDATA);
-  ___self = cppbind::type_info::typed_pointer_cast<const L4::Cap_base>(*static_cast<void **>(lua_touserdata(L, 1)));
-
-  luaL_checktype(L, 2, LUA_TUSERDATA);
-  _o = cppbind::type_info::typed_pointer_cast<const L4::Cap_base>(*static_cast<void **>(lua_touserdata(L, 2)));
-
-  auto __ret = ___self->operator==(*_o);
-
-  lua_pushboolean(L, __ret);
-  return 1;
-}
-
-int l4_cap_base_op_exclaimequal(lua_State *L)
-{
-  if (lua_gettop(L) != 2)
-    return luaL_error(L, "function expects 2 arguments");
-
-  using namespace L4;
-
-  const L4::Cap_base * ___self;
-  const L4::Cap_base * _o;
-
-  luaL_checktype(L, 1, LUA_TUSERDATA);
-  ___self = cppbind::type_info::typed_pointer_cast<const L4::Cap_base>(*static_cast<void **>(lua_touserdata(L, 1)));
-
-  luaL_checktype(L, 2, LUA_TUSERDATA);
-  _o = cppbind::type_info::typed_pointer_cast<const L4::Cap_base>(*static_cast<void **>(lua_touserdata(L, 2)));
-
-  auto __ret = ___self->operator!=(*_o);
-
-  lua_pushboolean(L, __ret);
-  return 1;
-}
-
-int l4_cap_base_invalidate(lua_State *L)
-{
-  if (lua_gettop(L) != 1)
-    return luaL_error(L, "function expects 1 arguments");
-
-  using namespace L4;
-
-  L4::Cap_base * ___self;
-
-  luaL_checktype(L, 1, LUA_TUSERDATA);
-  ___self = cppbind::type_info::typed_pointer_cast<L4::Cap_base>(*static_cast<void **>(lua_touserdata(L, 1)));
-
-  ___self->invalidate();
-
-  return 0;
-}
-
-int l4_cap_base_copy(lua_State *L)
-{
-  if (lua_gettop(L) != 1)
-    return luaL_error(L, "function expects 1 arguments");
-
-  using namespace L4;
-
-  const L4::Cap_base * __1;
-
-  luaL_checktype(L, 1, LUA_TUSERDATA);
-  __1 = cppbind::type_info::typed_pointer_cast<const L4::Cap_base>(*static_cast<void **>(lua_touserdata(L, 1)));
-
-  auto __ret = new L4::Cap_base(*__1);
-
-  *static_cast<void **>(lua_newuserdata(L, sizeof(void *))) = cppbind::type_info::make_typed(__ret, true);
-  cppbind::lua::setmetatable(L, "METATABLE__ZTSN2L48Cap_baseE");;
-  return 1;
-}
-
-int l4_cap_base_move(lua_State *L)
-{
-  if (lua_gettop(L) != 1)
-    return luaL_error(L, "function expects 1 arguments");
-
-  using namespace L4;
-
-  L4::Cap_base * __1;
-
-  luaL_checktype(L, 1, LUA_TUSERDATA);
-  __1 = cppbind::type_info::typed_pointer_cast<L4::Cap_base>(*static_cast<void **>(lua_touserdata(L, 1)));
-
-  auto __ret = new L4::Cap_base(std::move(*__1));
-
-  *static_cast<void **>(lua_newuserdata(L, sizeof(void *))) = cppbind::type_info::make_typed(__ret, true);
-  cppbind::lua::setmetatable(L, "METATABLE__ZTSN2L48Cap_baseE");;
-  return 1;
-}
-
-void __register(lua_State *L)
-{
-  lua_createtable(L, 0, 2);
-
-  // no constants
-
-  static luaL_Reg const __functions[] = {
-    {"copy", l4_cap_base_copy},
-    {"move", l4_cap_base_move},
-    {nullptr, nullptr}
-  };
-
-  luaL_setfuncs(L, __functions, 0);
-
-  // no records
-}
-
-} // namespace __L4CapBase
 
 namespace __L4CapVoid
 {
@@ -1078,12 +872,12 @@ int l4_cap_void_new_4(lua_State *L)
 
   using namespace L4;
 
-  unsigned long _idx = L4_INVALID_CAP;
+  l4_cap_idx_t _idx = L4_INVALID_CAP;
 
   do {
     if (lua_gettop(L) < 1) break;
     luaL_checktype(L, 1, LUA_TNUMBER);
-    _idx = cppbind::lua::tointegral<unsigned long>(L, 1);
+    _idx = cppbind::lua::tointegral<l4_cap_idx_t>(L, 1);
   } while(false);
 
   auto __ret = new L4::Cap<void>(_idx);
@@ -1260,7 +1054,7 @@ int l4_cap_void_snd_base(lua_State *L)
 
   const L4::Cap<void> * ___self;
   unsigned int _grant = 0;
-  unsigned long _base = L4_INVALID_CAP;
+  l4_cap_idx_t _base = L4_INVALID_CAP;
 
   do {
     luaL_checktype(L, 1, LUA_TUSERDATA);
@@ -1272,56 +1066,12 @@ int l4_cap_void_snd_base(lua_State *L)
 
     if (lua_gettop(L) < 3) break;
     luaL_checktype(L, 3, LUA_TNUMBER);
-    _base = cppbind::lua::tointegral<unsigned long>(L, 3);
+    _base = cppbind::lua::tointegral<l4_cap_idx_t>(L, 3);
   } while(false);
 
   auto __ret = ___self->snd_base(_grant, _base);
 
   cppbind::lua::pushintegral(L, __ret);
-  return 1;
-}
-
-int l4_cap_void_op_equalequal(lua_State *L)
-{
-  if (lua_gettop(L) != 2)
-    return luaL_error(L, "function expects 2 arguments");
-
-  using namespace L4;
-
-  const L4::Cap<void> * ___self;
-  const L4::Cap_base * _o;
-
-  luaL_checktype(L, 1, LUA_TUSERDATA);
-  ___self = cppbind::type_info::typed_pointer_cast<const L4::Cap<void>>(*static_cast<void **>(lua_touserdata(L, 1)));
-
-  luaL_checktype(L, 2, LUA_TUSERDATA);
-  _o = cppbind::type_info::typed_pointer_cast<const L4::Cap_base>(*static_cast<void **>(lua_touserdata(L, 2)));
-
-  auto __ret = ___self->operator==(*_o);
-
-  lua_pushboolean(L, __ret);
-  return 1;
-}
-
-int l4_cap_void_op_exclaimequal(lua_State *L)
-{
-  if (lua_gettop(L) != 2)
-    return luaL_error(L, "function expects 2 arguments");
-
-  using namespace L4;
-
-  const L4::Cap<void> * ___self;
-  const L4::Cap_base * _o;
-
-  luaL_checktype(L, 1, LUA_TUSERDATA);
-  ___self = cppbind::type_info::typed_pointer_cast<const L4::Cap<void>>(*static_cast<void **>(lua_touserdata(L, 1)));
-
-  luaL_checktype(L, 2, LUA_TUSERDATA);
-  _o = cppbind::type_info::typed_pointer_cast<const L4::Cap_base>(*static_cast<void **>(lua_touserdata(L, 2)));
-
-  auto __ret = ___self->operator!=(*_o);
-
-  lua_pushboolean(L, __ret);
   return 1;
 }
 
@@ -1415,12 +1165,12 @@ int l4_cap_calc_new_3(lua_State *L)
 
   using namespace L4;
 
-  unsigned long _idx = L4_INVALID_CAP;
+  l4_cap_idx_t _idx = L4_INVALID_CAP;
 
   do {
     if (lua_gettop(L) < 1) break;
     luaL_checktype(L, 1, LUA_TNUMBER);
-    _idx = cppbind::lua::tointegral<unsigned long>(L, 1);
+    _idx = cppbind::lua::tointegral<l4_cap_idx_t>(L, 1);
   } while(false);
 
   auto __ret = new L4::Cap<Calc>(_idx);
@@ -1616,7 +1366,7 @@ int l4_cap_calc_snd_base(lua_State *L)
 
   const L4::Cap<Calc> * ___self;
   unsigned int _grant = 0;
-  unsigned long _base = L4_INVALID_CAP;
+  l4_cap_idx_t _base = L4_INVALID_CAP;
 
   do {
     luaL_checktype(L, 1, LUA_TUSERDATA);
@@ -1628,56 +1378,12 @@ int l4_cap_calc_snd_base(lua_State *L)
 
     if (lua_gettop(L) < 3) break;
     luaL_checktype(L, 3, LUA_TNUMBER);
-    _base = cppbind::lua::tointegral<unsigned long>(L, 3);
+    _base = cppbind::lua::tointegral<l4_cap_idx_t>(L, 3);
   } while(false);
 
   auto __ret = ___self->snd_base(_grant, _base);
 
   cppbind::lua::pushintegral(L, __ret);
-  return 1;
-}
-
-int l4_cap_calc_op_equalequal(lua_State *L)
-{
-  if (lua_gettop(L) != 2)
-    return luaL_error(L, "function expects 2 arguments");
-
-  using namespace L4;
-
-  const L4::Cap<Calc> * ___self;
-  const L4::Cap_base * _o;
-
-  luaL_checktype(L, 1, LUA_TUSERDATA);
-  ___self = cppbind::type_info::typed_pointer_cast<const L4::Cap<Calc>>(*static_cast<void **>(lua_touserdata(L, 1)));
-
-  luaL_checktype(L, 2, LUA_TUSERDATA);
-  _o = cppbind::type_info::typed_pointer_cast<const L4::Cap_base>(*static_cast<void **>(lua_touserdata(L, 2)));
-
-  auto __ret = ___self->operator==(*_o);
-
-  lua_pushboolean(L, __ret);
-  return 1;
-}
-
-int l4_cap_calc_op_exclaimequal(lua_State *L)
-{
-  if (lua_gettop(L) != 2)
-    return luaL_error(L, "function expects 2 arguments");
-
-  using namespace L4;
-
-  const L4::Cap<Calc> * ___self;
-  const L4::Cap_base * _o;
-
-  luaL_checktype(L, 1, LUA_TUSERDATA);
-  ___self = cppbind::type_info::typed_pointer_cast<const L4::Cap<Calc>>(*static_cast<void **>(lua_touserdata(L, 1)));
-
-  luaL_checktype(L, 2, LUA_TUSERDATA);
-  _o = cppbind::type_info::typed_pointer_cast<const L4::Cap_base>(*static_cast<void **>(lua_touserdata(L, 2)));
-
-  auto __ret = ___self->operator!=(*_o);
-
-  lua_pushboolean(L, __ret);
   return 1;
 }
 
@@ -1726,7 +1432,13 @@ void __register(lua_State *L)
 {
   lua_createtable(L, 0, 0);
 
-  // no constants
+  lua_pushstring(L, "L4_CAP_BASE_NO_INIT");
+  cppbind_lua_pushintegral_constexpr(L, static_cast<unsigned int>(L4::Cap_base::No_init));
+  lua_settable(L, -3);
+
+  lua_pushstring(L, "L4_CAP_BASE_INVALID");
+  cppbind_lua_pushintegral_constexpr(L, static_cast<unsigned long>(L4::Cap_base::Invalid));
+  lua_settable(L, -3);
 
   // no functions
 
@@ -1738,9 +1450,6 @@ void __register(lua_State *L)
 
   __L4CapL4Meta::__register(L);
   lua_setfield(L, -2, "L4CapL4Meta");
-
-  __L4CapBase::__register(L);
-  lua_setfield(L, -2, "L4CapBase");
 
   __L4CapVoid::__register(L);
   lua_setfield(L, -2, "L4CapVoid");
@@ -1787,18 +1496,6 @@ void __createmetatables(lua_State *L)
       {"move", cppbind::lua::bind_move}
     });
 
-  cppbind::lua::createmetatable(L, "METATABLE__ZTSN2L48Cap_baseE",
-    {
-      {"cap", __L4CapBase::l4_cap_base_cap},
-      {"is_valid", __L4CapBase::l4_cap_base_is_valid},
-      {"snd_base", __L4CapBase::l4_cap_base_snd_base},
-      {"op_equalequal", __L4CapBase::l4_cap_base_op_equalequal},
-      {"op_exclaimequal", __L4CapBase::l4_cap_base_op_exclaimequal},
-      {"invalidate", __L4CapBase::l4_cap_base_invalidate},
-      {"copy", cppbind::lua::bind_copy},
-      {"move", cppbind::lua::bind_move}
-    });
-
   cppbind::lua::createmetatable(L, "METATABLE__ZTSN2L43CapIvEE",
     {
       {"move_1", __L4CapVoid::l4_cap_void_move_1},
@@ -1806,8 +1503,6 @@ void __createmetatables(lua_State *L)
       {"cap", __L4CapVoid::l4_cap_void_cap},
       {"is_valid", __L4CapVoid::l4_cap_void_is_valid},
       {"snd_base", __L4CapVoid::l4_cap_void_snd_base},
-      {"op_equalequal", __L4CapVoid::l4_cap_void_op_equalequal},
-      {"op_exclaimequal", __L4CapVoid::l4_cap_void_op_exclaimequal},
       {"invalidate", __L4CapVoid::l4_cap_void_invalidate},
       {"copy", cppbind::lua::bind_copy},
       {"move", cppbind::lua::bind_move}
@@ -1821,8 +1516,6 @@ void __createmetatables(lua_State *L)
       {"cap", __L4CapCalc::l4_cap_calc_cap},
       {"is_valid", __L4CapCalc::l4_cap_calc_is_valid},
       {"snd_base", __L4CapCalc::l4_cap_calc_snd_base},
-      {"op_equalequal", __L4CapCalc::l4_cap_calc_op_equalequal},
-      {"op_exclaimequal", __L4CapCalc::l4_cap_calc_op_exclaimequal},
       {"invalidate", __L4CapCalc::l4_cap_calc_invalidate},
       {"copy", cppbind::lua::bind_copy},
       {"move", cppbind::lua::bind_move}

@@ -12,30 +12,6 @@ extern "C" {
 
 #include "/home/timo/github/l4re/l4/pkg/clntsrv/wrap/output/env_c.h"
 
-struct l4_cap_calc
-{
-  union {
-    char mem[8];
-    void *ptr;
-  } obj;
-
-  int is_initialized;
-  int is_const;
-  int is_owning;
-};
-
-struct l4_cap_l4_task
-{
-  union {
-    char mem[8];
-    void *ptr;
-  } obj;
-
-  int is_initialized;
-  int is_const;
-  int is_owning;
-};
-
 struct l4_re_env l4_re_env_env(void)
 {
   using namespace L4Re;
@@ -61,7 +37,7 @@ l4_cap_idx_t l4_re_env_task(const struct l4_re_env * __self)
   return __ret.cap();
 }
 
-unsigned long l4_re_env_first_free_cap_1(const struct l4_re_env * __self)
+l4_cap_idx_t l4_re_env_first_free_cap_1(const struct l4_re_env * __self)
 {
   using namespace L4Re;
 
@@ -75,7 +51,7 @@ unsigned long l4_re_env_first_free_cap_1(const struct l4_re_env * __self)
   return __ret;
 }
 
-unsigned long l4_re_env_first_free_utcb_1(const struct l4_re_env * __self)
+l4_addr_t l4_re_env_first_free_utcb_1(const struct l4_re_env * __self)
 {
   using namespace L4Re;
 
@@ -89,12 +65,12 @@ unsigned long l4_re_env_first_free_utcb_1(const struct l4_re_env * __self)
   return __ret;
 }
 
-void l4_re_env_first_free_cap_2(struct l4_re_env * __self, unsigned long c)
+void l4_re_env_first_free_cap_2(struct l4_re_env * __self, l4_cap_idx_t c)
 {
   using namespace L4Re;
 
   L4Re::Env * ___self;
-  unsigned long _c;
+  l4_cap_idx_t _c;
 
   assert(__self->is_initialized);
   assert(!__self->is_const);
@@ -105,12 +81,12 @@ void l4_re_env_first_free_cap_2(struct l4_re_env * __self, unsigned long c)
   ___self->first_free_cap(_c);
 }
 
-void l4_re_env_first_free_utcb_2(struct l4_re_env * __self, unsigned long u)
+void l4_re_env_first_free_utcb_2(struct l4_re_env * __self, l4_addr_t u)
 {
   using namespace L4Re;
 
   L4Re::Env * ___self;
-  unsigned long _u;
+  l4_addr_t _u;
 
   assert(__self->is_initialized);
   assert(!__self->is_const);
